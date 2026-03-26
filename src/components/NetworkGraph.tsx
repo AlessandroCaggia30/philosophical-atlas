@@ -35,11 +35,11 @@ interface GraphEdge {
 }
 
 // Force-directed layout parameters
-const REPULSION = 4000;
-const ATTRACTION = 0.001;
-const TRADITION_GRAVITY = 0.008;
-const DAMPING = 0.82;
-const MIN_DIST = 60;
+const REPULSION = 15000;
+const ATTRACTION = 0.0004;
+const TRADITION_GRAVITY = 0.003;
+const DAMPING = 0.78;
+const MIN_DIST = 100;
 
 function seeded(s: string): number {
   let h = 0;
@@ -56,7 +56,7 @@ const REGION_ORDER = [
 export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: NetworkGraphProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.42 });
+  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.25 });
   const [dragging, setDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
@@ -95,7 +95,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
       trads.forEach(t => {
         if (!matchTradition([t.id]) || !matchSearch(t.name)) { globalIdx++; return; }
         const angle = (globalIdx / totalTrad) * Math.PI * 2 - Math.PI / 2;
-        const r = 900;
+        const r = 1600;
         const x = Math.cos(angle) * r;
         const y = Math.sin(angle) * r;
         tradPositions.set(t.id, { x, y });
@@ -123,7 +123,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
           if (p) { bx = p.x; by = p.y; break; }
         }
 
-        const spread = 250;
+        const spread = 500;
         const ax = seeded(a.id);
         const ay = seeded(a.id + 'y');
 
@@ -182,9 +182,9 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
         let dy = b.y - a.y;
         let dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 1) { dist = 1; dx = Math.random() - 0.5; dy = Math.random() - 0.5; }
-        if (dist > 800) continue; // skip far nodes for perf
+        if (dist > 1500) continue; // skip far nodes for perf
 
-        const minD = a.type === 'tradition' && b.type === 'tradition' ? 180 : MIN_DIST;
+        const minD = a.type === 'tradition' && b.type === 'tradition' ? 350 : MIN_DIST;
         const force = REPULSION / (dist * dist);
         const fx = (dx / dist) * force;
         const fy = (dy / dist) * force;
@@ -236,8 +236,8 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
       const node = nodeMap.get(t.id);
       if (!node) { gi++; return; }
       const angle = (gi / totalTrad) * Math.PI * 2 - Math.PI / 2;
-      const tx = Math.cos(angle) * 900;
-      const ty = Math.sin(angle) * 900;
+      const tx = Math.cos(angle) * 1600;
+      const ty = Math.sin(angle) * 1600;
       node.vx += (tx - node.x) * 0.005;
       node.vy += (ty - node.y) * 0.005;
       gi++;
@@ -254,7 +254,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
     });
 
     iterRef.current++;
-    if (iterRef.current > 300 || totalMovement / nodes.length < 0.05) {
+    if (iterRef.current > 600 || totalMovement / nodes.length < 0.02) {
       setSettled(true);
     }
   }, []);
@@ -347,7 +347,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
 
       if (node.type === 'tradition') {
         // Large soft circle as cluster background
-        const bgR = 90;
+        const bgR = 180;
         ctx.beginPath();
         ctx.arc(node.x, node.y, bgR, 0, Math.PI * 2);
         ctx.fillStyle = node.color + '0d'; // very subtle fill
@@ -519,7 +519,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
         {[
           { label: '+', action: () => setTransform(t => ({ ...t, scale: Math.min(10, t.scale * 1.4) })) },
           { label: '−', action: () => setTransform(t => ({ ...t, scale: Math.max(0.15, t.scale / 1.4) })) },
-          { label: '⟳', action: () => { setTransform({ x: 0, y: 0, scale: 0.42 }); setSettled(false); iterRef.current = 0; nodesRef.current = graphData.nodes.map(n => ({ ...n })); } },
+          { label: '⟳', action: () => { setTransform({ x: 0, y: 0, scale: 0.25 }); setSettled(false); iterRef.current = 0; nodesRef.current = graphData.nodes.map(n => ({ ...n })); } },
         ].map(b => (
           <button key={b.label} onClick={b.action} style={{
             width: 34, height: 34, border: '1px solid #e5e7eb', borderRadius: 8,
