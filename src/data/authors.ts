@@ -313,11 +313,16 @@ export const authors: Author[] = [
     "schools": [
       "Academy"
     ],
-    "shortBio": "Founder of the Academy; developed the theory of Forms and wrote dialogues on justice, beauty, and the good.",
+    "shortBio": "Plato (c. 428–348 BCE) was an Athenian philosopher, student of Socrates, and founder of the Academy — the first institution of higher learning in the Western world. His philosophical system, developed across some thirty dialogues, addresses virtually every area of philosophy: metaphysics (the theory of Forms, in which eternal, immutable archetypes constitute the highest reality), epistemology (knowledge as recollection of the Forms, the divided line, the allegory of the Cave), ethics (the Form of the Good as the supreme principle, virtue as knowledge, the tripartite soul), political philosophy (the philosopher-king, the ideal city of the Republic, the critique of democracy), aesthetics (the critique of mimetic art), cosmology (the Demiurge and the creation of the world in the Timaeus), and the philosophy of love (Eros as the desire for the Beautiful and the Good in the Symposium). Plato's influence on Western philosophy, Christian theology, Islamic philosophy, and Renaissance humanism is immeasurable — Whitehead famously called the entire European philosophical tradition 'a series of footnotes to Plato.'",
     "keyDoctrines": [
-      "Theory of Forms",
-      "Philosopher-king",
-      "Allegory of the Cave"
+      "Theory of Forms: eternal, perfect, immutable archetypes (the Form of the Good, the Beautiful, Justice) of which material things are imperfect copies",
+      "Allegory of the Cave: most humans perceive only shadows of reality; philosophy is the ascent from the cave to the sunlight of the Forms",
+      "Tripartite soul: reason, spirit, and appetite — justice is the proper ordering of these three parts",
+      "Philosopher-king: only those who have knowledge of the Forms should rule the ideal city",
+      "Anamnesis (recollection): the soul, immortal and pre-existent, learns by recollecting knowledge of the Forms from before birth",
+      "Dialectic: the highest form of philosophical inquiry, ascending through question and answer to knowledge of the Forms",
+      "Allegory of the Divided Line: four levels of cognition from images through belief to mathematical reasoning and pure intellectual insight",
+      "Critique of writing: the written word is inferior to living philosophical dialogue"
     ],
     "influencesReceived": [
       "socrates",
@@ -336,7 +341,16 @@ export const authors: Author[] = [
       "phaedo",
       "timaeus",
       "meno",
-      "phaedrus"
+      "phaedrus",
+      "parmenides-dialogue",
+      "theaetetus",
+      "sophist-dialogue",
+      "laws",
+      "apology",
+      "crito",
+      "gorgias-dialogue",
+      "protagoras-dialogue",
+      "philebus"
     ],
     "relatedConcepts": [
       "forms",
@@ -373,12 +387,17 @@ export const authors: Author[] = [
     "schools": [
       "Lyceum"
     ],
-    "shortBio": "Student of Plato who created a comprehensive philosophical system covering logic, metaphysics, ethics, politics, and natural science.",
+    "shortBio": "Aristotle (384–322 BCE) was a Greek philosopher and polymath who studied under Plato for twenty years and later founded the Lyceum in Athens. He created the first comprehensive philosophical system in Western history, covering logic (the syllogism, the categories, the theory of demonstration), metaphysics (substance, form and matter, potentiality and actuality, the four causes, the unmoved mover), physics (natural philosophy, motion, place, time, the infinite), biology (extensive empirical classification of animals), ethics (virtue ethics, eudaimonia as the highest good, the doctrine of the mean), political science (classification of constitutions, the naturalness of the polis), rhetoric, poetics (the theory of tragedy and catharsis), and psychology (the soul as the form of the living body). Through Arabic translations and Islamic commentators (al-Farabi, Ibn Sina, Ibn Rushd), Aristotelian thought shaped medieval Christian scholasticism (especially through Thomas Aquinas) and remains foundational for logic, metaphysics, ethics, and political theory to this day.",
     "keyDoctrines": [
-      "Four causes",
-      "Substance and accidents",
-      "Virtue ethics",
-      "Syllogistic logic"
+      "Four causes: material, formal, efficient, and final — every explanation requires identifying these four types of causation",
+      "Substance (ousia): the primary category of being; that which underlies properties and persists through change",
+      "Form and matter (hylomorphism): every physical substance is a composite of form (what it is) and matter (what it is made of)",
+      "Potentiality and actuality: being is understood through the dynamic relation between what something could be and what it actually is",
+      "Virtue ethics: moral virtue is a stable disposition (hexis) to act according to the mean between excess and deficiency",
+      "Eudaimonia: the highest human good is happiness understood as the activity of the soul in accordance with virtue over a complete life",
+      "Syllogistic logic: the first formal system of deductive reasoning, based on premises and conclusions",
+      "The unmoved mover: the first cause of all motion, pure actuality with no potentiality, thinking thought thinking itself",
+      "Natural teleology: nature acts for an end; every natural thing has an intrinsic purpose (telos)"
     ],
     "influencesReceived": [
       "plato",
@@ -398,7 +417,8 @@ export const authors: Author[] = [
       "politics-aristotle",
       "de-anima",
       "categories",
-      "poetics-aristotle"
+      "poetics-aristotle",
+      "organon"
     ],
     "relatedConcepts": [
       "substance",
@@ -1074,12 +1094,15 @@ export const authors: Author[] = [
       "mahayana-buddhism"
     ],
     "schools": [],
-    "shortBio": "Founder of Buddhism; taught the Four Noble Truths and the Middle Way between asceticism and indulgence.",
+    "shortBio": "Siddhārtha Gautama, the Buddha ('the Awakened One,' c. 563–483 BCE), was the founder of Buddhism and one of the most influential thinkers in human history. Born a prince in Lumbini (present-day Nepal), he renounced his privileged life after encountering old age, sickness, and death, and pursued spiritual liberation through asceticism and meditation. His awakening (bodhi) under the Bodhi Tree at Bodh Gaya constituted the discovery of the Four Noble Truths and the Eightfold Path. The Buddha taught that all conditioned existence is characterized by three marks: impermanence (anicca), suffering (dukkha), and non-self (anattā) — there is no permanent, unchanging soul or self. Suffering arises from craving (taṇhā) conditioned by ignorance (avijjā), and ceases through the cessation of craving, realized by following the Middle Way between extreme asceticism and indulgence. The principle of dependent origination (paṭiccasamuppāda) — that everything arises in dependence upon conditions — is the philosophical foundation of his teaching. The Buddha's thought gave rise to the diverse traditions of Theravāda, Mahāyāna, and Vajrayāna Buddhism, spanning South, Southeast, East, and Central Asia, and deeply influencing philosophy, psychology, ethics, and contemplative practice worldwide.",
     "keyDoctrines": [
-      "Four Noble Truths",
-      "Dependent origination",
-      "No-self (anatta)",
-      "Middle Way"
+      "Four Noble Truths: (1) life involves suffering (dukkha), (2) suffering arises from craving (samudaya), (3) suffering can cease (nirodha), (4) the path to cessation is the Eightfold Path (magga)",
+      "Noble Eightfold Path: right view, right intention, right speech, right action, right livelihood, right effort, right mindfulness, right concentration",
+      "Three marks of existence: impermanence (anicca), suffering (dukkha), and non-self (anattā)",
+      "Dependent origination (paṭiccasamuppāda): all phenomena arise in dependence upon conditions; nothing exists independently or permanently",
+      "Anattā (non-self): there is no permanent, unchanging self or soul — the person is a stream of five aggregates (skandhas)",
+      "Middle Way: the path between extreme asceticism and sensual indulgence",
+      "Nibbāna (nirvāṇa): the cessation of craving, aversion, and delusion — the unconditioned"
     ],
     "influencesReceived": [],
     "influencesGiven": [
@@ -1316,11 +1339,15 @@ export const authors: Author[] = [
       "mahayana-buddhism"
     ],
     "schools": [],
-    "shortBio": "Founder of Madhyamaka Buddhism; demonstrated that all phenomena are empty of inherent existence through rigorous dialectic.",
+    "shortBio": "Nāgārjuna (c. 150–250 CE) was an Indian Buddhist philosopher and the founder of the Madhyamaka (Middle Way) school of Mahāyāna Buddhism. He is widely regarded as the most important Buddhist philosopher after the Buddha himself. His Mūlamadhyamakakārikā (Fundamental Verses on the Middle Way) employs rigorous dialectical analysis — the prasaṅga method of reductio ad absurdum — to demonstrate that all phenomena (dharmas) are devoid of inherent self-nature (svabhāva). This 'emptiness' (śūnyatā) is not nihilism but the very condition for the conventional reality of dependent origination (pratītyasamutpāda): because things lack fixed essence, they can arise, change, and interact. Nāgārjuna's famous equation of emptiness with dependent origination, and of saṃsāra with nirvāṇa, represents one of the most profound philosophical insights in the history of thought. His work profoundly shaped Tibetan Buddhism (through Candrakīrti and Tsongkhapa), East Asian Buddhism (Chan/Zen), and has drawn comparison with Wittgenstein, Derrida, and the later Heidegger in contemporary philosophy.",
     "keyDoctrines": [
-      "Śūnyatā (emptiness)",
-      "Two truths doctrine",
-      "Prasanga method"
+      "Śūnyatā (emptiness): all phenomena are empty of svabhāva (inherent self-nature) — they exist only through dependent origination",
+      "Pratītyasamutpāda (dependent origination): whatever arises does so in dependence upon conditions; nothing exists independently",
+      "Two truths doctrine: conventional truth (saṃvṛti-satya) and ultimate truth (paramārtha-satya) are distinguished but ultimately identical",
+      "Catuṣkoṭi (tetralemma): systematic negation of four positions — existence, non-existence, both, and neither — to reveal emptiness",
+      "Prasaṅga method: demonstrating the absurd consequences of any thesis asserting inherent existence",
+      "Identity of saṃsāra and nirvāṇa: there is no ontological difference between the conditioned world and liberation",
+      "Emptiness of emptiness: even emptiness itself is not an ultimate ground or substance"
     ],
     "influencesReceived": [
       "buddha"
@@ -1652,11 +1679,15 @@ export const authors: Author[] = [
       "vedanta"
     ],
     "schools": [],
-    "shortBio": "Greatest philosopher of Advaita Vedanta; argued Brahman alone is real, the world is appearance (maya).",
+    "shortBio": "Ādi Śaṅkara (788–820 CE) was an Indian philosopher and theologian who is the most important systematizer of Advaita Vedānta — the non-dualist school of Hindu philosophy. In a remarkably short life (traditionally 32 years), Śaṅkara composed commentaries (bhāṣyas) on the principal Upaniṣads, the Brahma Sūtras, and the Bhagavad Gītā, as well as independent philosophical works (the Vivekacūḍāmaṇi, Upadeśasāhasrī, and others). His central teaching is radical non-dualism: Brahman (the absolute, infinite, qualityless consciousness) alone is real; the world of multiplicity is māyā (appearance/superimposition); and the individual self (ātman) is numerically identical with Brahman. Ignorance (avidyā) causes us to superimpose distinctions where none exist, and liberation (mokṣa) is the direct knowledge (jñāna) of this identity — 'You are That' (tat tvam asi). Śaṅkara engaged critically and brilliantly with Buddhist philosophers (especially Mādhyamaka and Yogācāra), other Vedāntic schools, and the Mīmāṃsā tradition. He founded four monasteries (maṭhas) across India and is arguably the most influential philosopher in Indian history.",
     "keyDoctrines": [
-      "Brahman is sole reality",
-      "World as maya",
-      "Jiva is Brahman"
+      "Brahman alone is real (brahma satyam): the infinite, qualityless (nirguṇa) absolute consciousness is the sole reality",
+      "The world is māyā (jagan mithyā): the empirical world of multiplicity is neither fully real nor fully unreal — it is appearance superimposed on Brahman through ignorance",
+      "The self is Brahman (jīvo brahmaiva nāparaḥ): the individual self (ātman), stripped of its adventitious limiting conditions (upādhis), is non-different from Brahman",
+      "Avidyā (ignorance): beginningless cosmic ignorance superimposes the world of names and forms on non-dual Brahman",
+      "Adhyāsa (superimposition): the root error is confusing the self with the not-self, consciousness with its objects",
+      "Mokṣa through jñāna: liberation is not an achievement but the removal of ignorance through direct knowledge of Brahman",
+      "Three levels of reality: pāramārthika (ultimate/absolute), vyāvahārika (empirical/conventional), prātibhāsika (illusory)"
     ],
     "influencesReceived": [
       "gaudapada",
@@ -2128,11 +2159,16 @@ export const authors: Author[] = [
       "confucianism"
     ],
     "schools": [],
-    "shortBio": "Founder of Confucianism; taught humaneness (ren), ritual propriety (li), and moral cultivation as the basis of good governance.",
+    "shortBio": "Confucius (Kǒngzǐ, 551–479 BCE) was a Chinese philosopher, teacher, and political thinker whose thought became the foundation of East Asian civilization for over two millennia. Born in the state of Lu during the Spring and Autumn period, he traveled among the warring states seeking rulers who would implement his vision of moral governance. His teachings, compiled by disciples in the Analerta (Lúnyǔ), center on moral self-cultivation as the basis of good governance and social harmony. The core concept is rén (仁, humaneness/benevolence) — the supreme virtue of compassion and care for others. This is expressed through lǐ (禮, ritual propriety), yì (義, righteousness), zhì (智, wisdom), and xìn (信, trustworthiness). Confucius envisioned a society transformed not by law and punishment but by the moral example of the junzi (君子, the exemplary person). His thought was developed by Mencius (who argued human nature is innately good) and Xunzi (who emphasized the need for cultivation), and later synthesized with Buddhist and Daoist insights by the Song-Ming Neo-Confucians (Zhu Xi, Wang Yangming). Confucianism shaped governance, education, family life, and ethics across China, Korea, Japan, and Vietnam.",
     "keyDoctrines": [
-      "Ren (humaneness)",
-      "Li (ritual propriety)",
-      "Junzi (exemplary person)"
+      "Rén (仁, humaneness): the supreme virtue — loving others, benevolence, compassion in all relationships",
+      "Lǐ (禮, ritual propriety): the norms of proper conduct, ceremony, and social interaction that express and cultivate virtue",
+      "Yì (義, righteousness): doing what is morally right in each situation, regardless of personal gain",
+      "Junzi (君子, exemplary person): the moral ideal — one who cultivates virtue and leads by example rather than force",
+      "Zhèngmíng (正名, rectification of names): social order depends on things being called what they truly are",
+      "Xiào (孝, filial piety): reverence and care for parents and ancestors as the root of virtue",
+      "Government by moral example: the ruler's virtue transforms the people, making punitive law unnecessary",
+      "The Five Relationships: ruler-subject, parent-child, husband-wife, elder-younger, friend-friend — each with reciprocal duties"
     ],
     "influencesReceived": [],
     "influencesGiven": [
@@ -3179,11 +3215,14 @@ export const authors: Author[] = [
       "islamic-falsafa"
     ],
     "schools": [],
-    "shortBio": "Greatest philosopher of the Islamic world; developed a comprehensive system of metaphysics, logic, and medicine.",
+    "shortBio": "Ibn Sīnā (Avicenna, 980–1037 CE) was a Persian polymath and the most influential philosopher of the Islamic world. His philosophical system, developed in encyclopedic works like the Kitāb al-Shifā' (Book of Healing) and the Kitāb al-Najāt (Book of Salvation), represents the most comprehensive synthesis of Aristotelian philosophy, Neoplatonism, and Islamic theology achieved in the medieval period. Ibn Sīnā's metaphysical distinction between essence (māhiyya) and existence (wujūd) — the insight that in all contingent beings, what something is differs from that it is — became foundational for both Islamic and Latin scholastic philosophy. His proof for the existence of a Necessary Being (whose essence is identical with its existence), his theory of the emanation of intellects, his 'Flying Man' thought experiment (arguing for the self-awareness of the soul independent of the body), and his theory of the active intellect profoundly influenced al-Ghazālī, Suhrawardī, Mulla Ṣadrā, Thomas Aquinas, Duns Scotus, and the entire trajectory of medieval philosophy, East and West.",
     "keyDoctrines": [
-      "Essence-existence distinction",
-      "Flying Man argument",
-      "Necessary Being"
+      "Essence-existence distinction: in every contingent being, what it is (essence/māhiyya) differs from that it is (existence/wujūd) — only in God are they identical",
+      "Necessary Being (Wājib al-Wujūd): there must be a being whose existence is necessary in itself, not derived from another — this is God",
+      "Emanation: reality proceeds necessarily from the First Cause through a series of intellects to the material world",
+      "The Flying Man: a thought experiment demonstrating that the soul can be aware of itself even without any sensory input, proving the soul's immateriality",
+      "The Active Intellect: the lowest of the celestial intellects, which illuminates the human mind and enables abstract thought",
+      "Prophetology: prophets have a perfected intellect that receives knowledge directly from the Active Intellect, explaining revelation philosophically"
     ],
     "influencesReceived": [
       "al-farabi",
@@ -4933,11 +4972,16 @@ export const authors: Author[] = [
       "rationalism"
     ],
     "schools": [],
-    "shortBio": "Initiated the critical turn in philosophy; synthesized rationalism and empiricism in the Critique of Pure Reason.",
+    "shortBio": "Immanuel Kant (1724–1804) was a German philosopher whose critical philosophy represents one of the most important turning points in the history of thought. Working in Königsberg (never traveling more than ten miles from his birthplace), Kant produced a philosophical revolution that synthesized rationalism and empiricism and set the terms for virtually all subsequent philosophy. His three Critiques — the Critique of Pure Reason (1781/1787), the Critique of Practical Reason (1788), and the Critique of Judgment (1790) — systematically examine the conditions, limits, and scope of human knowledge, morality, and aesthetic judgment. Kant argued that the mind actively structures experience through a priori forms of intuition (space and time) and categories of the understanding (substance, causality, etc.), so that we can know phenomena (things as they appear to us) but never noumena (things in themselves). In ethics, he developed the categorical imperative — the supreme moral principle that commands unconditionally — grounding morality in pure practical reason and the dignity of rational beings. Kant's influence extends to German Idealism (Fichte, Schelling, Hegel), phenomenology (Husserl), analytic philosophy, political liberalism, and contemporary moral theory.",
     "keyDoctrines": [
-      "Transcendental idealism",
-      "Categorical imperative",
-      "Synthetic a priori"
+      "Transcendental idealism: we know objects only as they appear to us (phenomena), not as they are in themselves (noumena), because the mind structures experience through a priori forms",
+      "Synthetic a priori knowledge: propositions that are both informative about the world and knowable independently of experience (e.g., mathematics, fundamental principles of natural science)",
+      "Categories of the understanding: twelve fundamental concepts (substance, causality, etc.) that the mind applies to organize sensory experience",
+      "The categorical imperative: 'Act only according to that maxim whereby you can at the same time will that it should become a universal law' — the supreme principle of morality",
+      "Autonomy: the moral will is self-legislating; genuine morality requires acting from duty, not inclination",
+      "The dignity of rational beings: every rational being must be treated as an end in itself, never merely as a means",
+      "The antinomies of pure reason: reason inevitably falls into contradictions when it tries to know things in themselves (e.g., whether the world has a beginning in time)",
+      "The conditions of possible experience: philosophy's task is to investigate the a priori conditions that make experience, knowledge, and morality possible"
     ],
     "influencesReceived": [
       "hume",
@@ -5276,12 +5320,15 @@ export const authors: Author[] = [
       "marxism"
     ],
     "schools": [],
-    "shortBio": "Developed historical materialism and critique of capitalism; material conditions determine consciousness.",
+    "shortBio": "Karl Marx (1818–1883) was a German philosopher, economist, and revolutionary thinker whose work fundamentally transformed philosophy, social science, political thought, and world history. Building on and inverting Hegel's dialectical idealism, Marx developed historical materialism — the theory that the material conditions of production (the economic base) determine the forms of consciousness, ideology, law, politics, and culture (the superstructure). His analysis of capitalism in Das Kapital reveals the mechanisms of commodity fetishism, surplus value extraction, and the structural exploitation of labor. Central concepts include alienation (the worker's estrangement from their labor, its product, fellow workers, and their own human nature), class struggle (the engine of historical change), ideology (ideas that serve the interests of the ruling class while appearing universal), and praxis (the unity of theory and revolutionary practice). Marx's thought was developed by Engels, Lenin, Gramsci, Lukács, the Frankfurt School (Adorno, Horkheimer, Marcuse, Habermas), Althusser, and many others, and profoundly influenced political movements, social science, literary criticism, and philosophy worldwide.",
     "keyDoctrines": [
-      "Historical materialism",
-      "Alienation",
-      "Class struggle",
-      "Surplus value"
+      "Historical materialism: the material conditions of economic production determine the forms of consciousness, politics, law, and culture",
+      "Alienation: under capitalism, workers are estranged from their labor, its products, their fellow workers, and their own human essence",
+      "Surplus value: the capitalist extracts surplus value from workers by paying them less than the value their labor produces",
+      "Class struggle: 'The history of all hitherto existing society is the history of class struggles' — class conflict drives historical change",
+      "Base and superstructure: the economic base (relations of production) determines the ideological superstructure (law, politics, religion, philosophy)",
+      "Commodity fetishism: social relations between people appear as relations between things in capitalist society",
+      "Praxis: the unity of theory and practice — philosophy must not only interpret the world but change it"
     ],
     "influencesReceived": [
       "hegel",
@@ -5426,12 +5473,17 @@ export const authors: Author[] = [
       "existentialism"
     ],
     "schools": [],
-    "shortBio": "Posed the question of Being (Seinsfrage); analyzed human existence (Dasein) as being-toward-death.",
+    "shortBio": "Martin Heidegger (1889–1976) was a German philosopher whose work represents one of the most profound and controversial contributions to 20th-century thought. His magnum opus, Being and Time (Sein und Zeit, 1927), reopened the ancient question of Being (Seinsfrage) by analyzing the being of the entity that asks the question — Dasein (human existence, literally 'being-there'). Heidegger argued that Western metaphysics since Plato had 'forgotten' the question of Being by reducing it to the being of entities (ontic questions rather than ontological ones). Through his analysis of Dasein's fundamental structures — being-in-the-world, care (Sorge), thrownness (Geworfenheit), being-toward-death, anxiety, authenticity, and temporality — Heidegger developed a new understanding of human existence as finite, historical, and constitutively open to Being. His later thought (the 'turn' or Kehre) moved from the analysis of Dasein to the history of Being itself, exploring how different epochs understand Being differently, and engaging with technology, language, art, and poetry as sites where Being reveals and conceals itself. Despite the profound scandal of his involvement with National Socialism, Heidegger's influence on existentialism (Sartre, Beauvoir), hermeneutics (Gadamer), deconstruction (Derrida), East-West dialogue (Kyoto School), and contemporary Continental philosophy is enormous.",
     "keyDoctrines": [
-      "Dasein",
-      "Being-toward-death",
-      "Ontological difference",
-      "Aletheia"
+      "The question of Being (Seinsfrage): the fundamental question of philosophy — what does it mean for anything to be?",
+      "Dasein: human existence as the entity that questions its own being; always 'being-there' in a concrete situation",
+      "Being-in-the-world: Dasein is not a subject confronting objects but is always already engaged in a meaningful world",
+      "Ontological difference: the crucial distinction between Being itself (Sein) and particular beings/entities (Seiendes)",
+      "Being-toward-death: Dasein's ownmost possibility — confronting mortality individualizes and enables authentic existence",
+      "Authenticity (Eigentlichkeit) and inauthenticity: Dasein can own its existence resolutely or lose itself in the anonymous 'they' (das Man)",
+      "Aletheia (unconcealment): truth is not correspondence but the event of revealing/concealing in which beings show themselves",
+      "The history of Being: different epochs understand Being differently; modernity is characterized by the forgetting of Being and the dominance of technology as 'enframing' (Gestell)",
+      "Language as the house of Being: in authentic speech and especially in poetry, Being comes to language"
     ],
     "influencesReceived": [
       "husserl",
