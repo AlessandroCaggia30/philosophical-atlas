@@ -4,8 +4,6 @@ import { useEffect, useRef, useCallback, useState, useMemo } from 'react';
 import type { NodeType, FilterState } from '@/types';
 import { traditions } from '@/data/traditions';
 import { authors } from '@/data/authors';
-import { texts } from '@/data/texts';
-import { concepts } from '@/data/concepts';
 import { edges } from '@/data/edges';
 import { getTraditionColor } from '@/lib/utils';
 
@@ -23,242 +21,245 @@ interface GraphNode {
   year?: number;
   x: number;
   y: number;
+  vx: number;
+  vy: number;
   size: number;
   color: string;
-  opacity: number;
+  alpha: number;
 }
 
 interface GraphEdge {
   source: string;
   target: string;
   type: string;
-  color: string;
 }
 
-// Assign each tradition a region-based angular sector for spatial clustering
-const REGION_SECTORS: Record<string, { startAngle: number; endAngle: number; radius: number }> = {
-  'South Asia':    { startAngle: 0.0,  endAngle: 0.5,  radius: 350 },
-  'East Asia':     { startAngle: 0.5,  endAngle: 1.0,  radius: 350 },
-  'Middle East':   { startAngle: 1.0,  endAngle: 1.4,  radius: 350 },
-  'Europe':        { startAngle: 1.4,  endAngle: 2.2,  radius: 350 },
-  'Africa':        { startAngle: 2.2,  endAngle: 2.6,  radius: 350 },
-  'Americas':      { startAngle: 2.6,  endAngle: 3.0,  radius: 350 },
-  'Central Asia':  { startAngle: 0.3,  endAngle: 0.6,  radius: 280 },
-  'Global':        { startAngle: 3.0,  endAngle: 3.5,  radius: 280 },
-};
+// Force-directed layout parameters
+const REPULSION = 800;
+const ATTRACTION = 0.003;
+const TRADITION_GRAVITY = 0.02;
+const DAMPING = 0.85;
+const MIN_DIST = 30;
 
-function getRegionSector(region: string) {
-  for (const [key, sector] of Object.entries(REGION_SECTORS)) {
-    if (region.includes(key) || key.includes(region)) return sector;
-  }
-  return REGION_SECTORS['Global'] || { startAngle: 0, endAngle: Math.PI * 2, radius: 400 };
+function seeded(s: string): number {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) - h + s.charCodeAt(i)) | 0;
+  return ((h & 0x7fffffff) % 10000) / 10000;
 }
 
-// Map year to opacity: earlier = more transparent, recent = more opaque
-function yearToOpacity(year: number | undefined): number {
-  if (year === undefined) return 0.8;
-  const minYear = -2500;
-  const maxYear = 2025;
-  const normalized = (year - minYear) / (maxYear - minYear); // 0 = ancient, 1 = modern
-  return 0.3 + normalized * 0.7; // range 0.3 to 1.0
-}
-
-// Deterministic pseudo-random from string seed
-function seededRandom(seed: string): number {
-  let hash = 0;
-  for (let i = 0; i < seed.length; i++) {
-    const char = seed.charCodeAt(i);
-    hash = ((hash << 5) - hash) + char;
-    hash |= 0;
-  }
-  return ((hash & 0x7fffffff) % 1000) / 1000;
-}
+// Region layout: spread traditions in a large circle grouped by region
+const REGION_ORDER = [
+  'South Asia', 'Central Asia', 'East Asia', 'Middle East',
+  'Europe', 'Africa', 'Americas', 'Global',
+];
 
 export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: NetworkGraphProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.85 });
+  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.7 });
   const [dragging, setDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const nodesRef = useRef<GraphNode[]>([]);
   const edgesRef = useRef<GraphEdge[]>([]);
+  const animRef = useRef<number>(0);
+  const [settled, setSettled] = useState(false);
+  const iterRef = useRef(0);
 
+  // Build graph — only traditions and authors (no texts/concepts for clarity)
   const graphData = useMemo(() => {
     const nodes: GraphNode[] = [];
     const graphEdges: GraphEdge[] = [];
+    const nodeIds = new Set<string>();
 
     const showType = (type: NodeType) => filters.nodeTypes.length === 0 || filters.nodeTypes.includes(type);
     const matchTradition = (tradIds: string[]) => filters.traditions.length === 0 || tradIds.some(t => filters.traditions.includes(t));
     const matchEra = (year: number) => year >= filters.eraStart && year <= filters.eraEnd;
     const matchSearch = (label: string) => !filters.searchQuery || label.toLowerCase().includes(filters.searchQuery.toLowerCase());
 
-    const nodeIds = new Set<string>();
-
-    // Assign traditions to spatial sectors by region
-    const traditionPositions = new Map<string, { x: number; y: number }>();
-    const regionTraditionCounts: Record<string, number> = {};
-    const regionTraditionIndex: Record<string, number> = {};
-
-    // Count traditions per region
+    // Place traditions in a circle grouped by region
+    const tradByRegion: Record<string, typeof traditions> = {};
     traditions.forEach(t => {
-      const region = t.region || 'Global';
-      regionTraditionCounts[region] = (regionTraditionCounts[region] || 0) + 1;
+      const r = t.region || 'Global';
+      if (!tradByRegion[r]) tradByRegion[r] = [];
+      tradByRegion[r].push(t);
     });
 
-    // Place traditions in their regional sector
-    if (showType('tradition')) {
-      traditions.forEach(t => {
-        if (!matchTradition([t.id]) || !matchSearch(t.name)) return;
-        const region = t.region || 'Global';
-        const sector = getRegionSector(region);
-        if (!regionTraditionIndex[region]) regionTraditionIndex[region] = 0;
-        const idx = regionTraditionIndex[region]++;
-        const count = regionTraditionCounts[region] || 1;
+    let globalIdx = 0;
+    const totalTrad = traditions.length;
+    const tradPositions = new Map<string, { x: number; y: number }>();
 
-        const angleRange = (sector.endAngle - sector.startAngle) * Math.PI;
-        const angle = sector.startAngle * Math.PI + angleRange * ((idx + 0.5) / count);
-        const r = sector.radius + seededRandom(t.id) * 60 - 30;
-
+    REGION_ORDER.forEach(region => {
+      const trads = tradByRegion[region] || [];
+      trads.forEach(t => {
+        if (!matchTradition([t.id]) || !matchSearch(t.name)) { globalIdx++; return; }
+        const angle = (globalIdx / totalTrad) * Math.PI * 2 - Math.PI / 2;
+        const r = 500;
         const x = Math.cos(angle) * r;
         const y = Math.sin(angle) * r;
-        traditionPositions.set(t.id, { x, y });
+        tradPositions.set(t.id, { x, y });
 
-        nodes.push({
-          id: t.id,
-          type: 'tradition',
-          label: t.name,
-          tradition: t.id,
-          year: t.timeSpan.start,
-          x, y,
-          size: 14,
-          color: t.color,
-          opacity: 1.0,
-        });
-        nodeIds.add(t.id);
+        if (showType('tradition')) {
+          nodes.push({
+            id: t.id, type: 'tradition', label: t.name, tradition: t.id,
+            year: t.timeSpan.start, x, y, vx: 0, vy: 0,
+            size: 18, color: t.color, alpha: 1.0,
+          });
+          nodeIds.add(t.id);
+        }
+        globalIdx++;
       });
-    }
+    });
 
-    // Place authors clustered near their tradition, with chronological spread
+    // Authors — initial position near their tradition
     if (showType('author')) {
       authors.forEach(a => {
         if (!matchTradition(a.traditions) || !matchEra(a.dates.start) || !matchSearch(a.name)) return;
 
-        // Find the tradition center
-        let baseX = 0, baseY = 0;
+        let bx = 0, by = 0;
         for (const tId of a.traditions) {
-          const pos = traditionPositions.get(tId);
-          if (pos) { baseX = pos.x; baseY = pos.y; break; }
+          const p = tradPositions.get(tId);
+          if (p) { bx = p.x; by = p.y; break; }
         }
 
-        // Spread authors around tradition center, using year for radial distance
-        // Earlier authors closer to center, later ones further out
-        const yearNorm = ((a.dates.start + 2500) / 4525); // 0=ancient, 1=modern
-        const spreadRadius = 40 + yearNorm * 80;
-        const angle = seededRandom(a.id) * Math.PI * 2;
+        const spread = 120;
+        const ax = seeded(a.id);
+        const ay = seeded(a.id + 'y');
 
-        const x = baseX + Math.cos(angle) * spreadRadius;
-        const y = baseY + Math.sin(angle) * spreadRadius;
+        // Era-based alpha: ancient = lighter
+        const yearNorm = Math.max(0, Math.min(1, (a.dates.start + 2500) / 4525));
+        const alpha = 0.35 + yearNorm * 0.65;
 
-        // Size based on influence (connections)
-        const connectionCount = a.influencesGiven.length + a.influencesReceived.length;
-        const size = 4 + Math.min(connectionCount, 12) * 0.6;
+        // Size by connections
+        const conns = a.influencesGiven.length + a.influencesReceived.length;
+        const size = 5 + Math.min(conns, 8) * 0.8;
 
         nodes.push({
-          id: a.id,
-          type: 'author',
-          label: a.name,
-          tradition: a.traditions[0],
+          id: a.id, type: 'author', label: a.name, tradition: a.traditions[0],
           year: a.dates.start,
-          x, y,
-          size,
-          color: getTraditionColor(a.traditions[0] || ''),
-          opacity: yearToOpacity(a.dates.start),
+          x: bx + (ax - 0.5) * spread,
+          y: by + (ay - 0.5) * spread,
+          vx: 0, vy: 0,
+          size, color: getTraditionColor(a.traditions[0] || ''), alpha,
         });
         nodeIds.add(a.id);
       });
     }
 
-    // Texts: small dots near their author
-    if (showType('text')) {
-      const textSubset = texts.slice(0, 200);
-      textSubset.forEach(t => {
-        if (!matchTradition([t.tradition]) || !matchEra(t.date.start) || !matchSearch(t.title)) return;
-        const authorNode = nodes.find(n => n.id === t.author);
-        const bx = authorNode ? authorNode.x : (seededRandom(t.id) - 0.5) * 600;
-        const by = authorNode ? authorNode.y : (seededRandom(t.id + 'y') - 0.5) * 600;
-
-        nodes.push({
-          id: t.id, type: 'text', label: t.title, tradition: t.tradition,
-          year: t.date.start,
-          x: bx + (seededRandom(t.id + 'tx') - 0.5) * 30,
-          y: by + (seededRandom(t.id + 'ty') - 0.5) * 30,
-          size: 3,
-          color: getTraditionColor(t.tradition),
-          opacity: yearToOpacity(t.date.start) * 0.6,
-        });
-        nodeIds.add(t.id);
-      });
-    }
-
-    // Concepts: placed between traditions that share them
-    if (showType('concept')) {
-      concepts.forEach(c => {
-        if (!matchSearch(c.term)) return;
-
-        // Position concept near the average of its major authors' positions
-        let cx = 0, cy = 0, count = 0;
-        c.majorAuthors.forEach(aId => {
-          const an = nodes.find(n => n.id === aId);
-          if (an) { cx += an.x; cy += an.y; count++; }
-        });
-        if (count > 0) { cx /= count; cy /= count; }
-        else {
-          const angle = seededRandom(c.id) * Math.PI * 2;
-          cx = Math.cos(angle) * 200;
-          cy = Math.sin(angle) * 200;
-        }
-
-        nodes.push({
-          id: c.id, type: 'concept', label: c.term,
-          year: 0,
-          x: cx + (seededRandom(c.id + 'cx') - 0.5) * 40,
-          y: cy + (seededRandom(c.id + 'cy') - 0.5) * 40,
-          size: 5,
-          color: '#eab308',
-          opacity: 0.7,
-        });
-        nodeIds.add(c.id);
-      });
-    }
-
-    // Edges
+    // Edges — only influence, teacher, student, debated
     edges.forEach(e => {
-      if (nodeIds.has(e.source) && nodeIds.has(e.target)) {
-        let color: string;
-        switch (e.relationType) {
-          case 'influenced': case 'teacher_of': case 'student_of': color = '#6366f150'; break;
-          case 'criticized': case 'debated': color = '#ef444440'; break;
-          case 'developed': case 'wrote': color = '#22c55e30'; break;
-          case 'belongs_to': color = '#6b728020'; break;
-          case 'parallels': case 'shares_concept': color = '#eab30830'; break;
-          case 'transmitted_to': color = '#06b6d440'; break;
-          default: color = '#6b728020';
-        }
-        graphEdges.push({ source: e.source, target: e.target, type: e.relationType, color });
+      if (!nodeIds.has(e.source) || !nodeIds.has(e.target)) return;
+      if (['influenced', 'teacher_of', 'student_of', 'debated', 'criticized', 'developed', 'transmitted_to', 'parallels'].includes(e.relationType)) {
+        graphEdges.push({ source: e.source, target: e.target, type: e.relationType });
       }
     });
 
     return { nodes, edges: graphEdges };
   }, [filters]);
 
+  // Reset simulation on data change
   useEffect(() => {
-    nodesRef.current = graphData.nodes;
+    nodesRef.current = graphData.nodes.map(n => ({ ...n }));
     edgesRef.current = graphData.edges;
+    setSettled(false);
+    iterRef.current = 0;
   }, [graphData]);
 
-  // Draw
+  // Force simulation step
+  const simulate = useCallback(() => {
+    const nodes = nodesRef.current;
+    const gEdges = edgesRef.current;
+    if (nodes.length === 0) return;
+
+    const nodeMap = new Map(nodes.map(n => [n.id, n]));
+
+    // Repulsion between all nodes
+    for (let i = 0; i < nodes.length; i++) {
+      for (let j = i + 1; j < nodes.length; j++) {
+        const a = nodes[i], b = nodes[j];
+        let dx = b.x - a.x;
+        let dy = b.y - a.y;
+        let dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 1) { dist = 1; dx = Math.random() - 0.5; dy = Math.random() - 0.5; }
+        if (dist > 400) continue; // skip far nodes for perf
+
+        const minD = a.type === 'tradition' && b.type === 'tradition' ? 80 : MIN_DIST;
+        const force = REPULSION / (dist * dist);
+        const fx = (dx / dist) * force;
+        const fy = (dy / dist) * force;
+        a.vx -= fx; a.vy -= fy;
+        b.vx += fx; b.vy += fy;
+
+        // Extra push if overlapping
+        if (dist < minD) {
+          const push = (minD - dist) * 0.3;
+          a.vx -= (dx / dist) * push;
+          a.vy -= (dy / dist) * push;
+          b.vx += (dx / dist) * push;
+          b.vy += (dy / dist) * push;
+        }
+      }
+    }
+
+    // Edge attraction
+    gEdges.forEach(e => {
+      const a = nodeMap.get(e.source);
+      const b = nodeMap.get(e.target);
+      if (!a || !b) return;
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      if (dist < 1) return;
+      const force = dist * ATTRACTION;
+      const fx = (dx / dist) * force;
+      const fy = (dy / dist) * force;
+      a.vx += fx; a.vy += fy;
+      b.vx -= fx; b.vy -= fy;
+    });
+
+    // Tradition gravity: authors pulled gently toward their tradition
+    nodes.forEach(n => {
+      if (n.type !== 'author' || !n.tradition) return;
+      const trad = nodeMap.get(n.tradition);
+      if (!trad) return;
+      const dx = trad.x - n.x;
+      const dy = trad.y - n.y;
+      n.vx += dx * TRADITION_GRAVITY;
+      n.vy += dy * TRADITION_GRAVITY;
+    });
+
+    // Traditions: light gravity toward their initial circle position
+    const totalTrad = traditions.length;
+    let gi = 0;
+    traditions.forEach(t => {
+      const node = nodeMap.get(t.id);
+      if (!node) { gi++; return; }
+      const angle = (gi / totalTrad) * Math.PI * 2 - Math.PI / 2;
+      const tx = Math.cos(angle) * 500;
+      const ty = Math.sin(angle) * 500;
+      node.vx += (tx - node.x) * 0.005;
+      node.vy += (ty - node.y) * 0.005;
+      gi++;
+    });
+
+    // Apply velocity
+    let totalMovement = 0;
+    nodes.forEach(n => {
+      n.vx *= DAMPING;
+      n.vy *= DAMPING;
+      n.x += n.vx;
+      n.y += n.vy;
+      totalMovement += Math.abs(n.vx) + Math.abs(n.vy);
+    });
+
+    iterRef.current++;
+    if (iterRef.current > 300 || totalMovement / nodes.length < 0.05) {
+      setSettled(true);
+    }
+  }, []);
+
+  // Animation loop
   const draw = useCallback(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -271,8 +272,8 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
     canvas.height = rect.height * dpr;
     ctx.scale(dpr, dpr);
 
-    // Dark background
-    ctx.fillStyle = '#0a0a0a';
+    // White background
+    ctx.fillStyle = '#ffffff';
     ctx.fillRect(0, 0, rect.width, rect.height);
 
     ctx.save();
@@ -283,157 +284,148 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
     const gEdges = edgesRef.current;
     const nodeMap = new Map(nodes.map(n => [n.id, n]));
 
-    // Region labels (subtle background text)
-    ctx.globalAlpha = 0.08;
-    ctx.font = 'bold 28px Georgia, serif';
-    ctx.textAlign = 'center';
-    ctx.fillStyle = '#ffffff';
-    const regionLabels = [
-      { label: 'South Asia', angle: 0.25, r: 350 },
-      { label: 'East Asia', angle: 0.75, r: 350 },
-      { label: 'Middle East', angle: 1.2, r: 350 },
-      { label: 'Europe', angle: 1.8, r: 380 },
-      { label: 'Africa', angle: 2.4, r: 350 },
-      { label: 'Americas', angle: 2.8, r: 350 },
-    ];
-    regionLabels.forEach(rl => {
-      ctx.fillText(rl.label, Math.cos(rl.angle * Math.PI) * rl.r, Math.sin(rl.angle * Math.PI) * rl.r);
-    });
-    ctx.globalAlpha = 1.0;
-
-    // Draw edges
+    // Draw edges first
     gEdges.forEach(e => {
-      const source = nodeMap.get(e.source);
-      const target = nodeMap.get(e.target);
-      if (!source || !target) return;
+      const a = nodeMap.get(e.source);
+      const b = nodeMap.get(e.target);
+      if (!a || !b) return;
 
-      const isHighlighted = highlightedNode && (e.source === highlightedNode || e.target === highlightedNode);
+      const isHl = highlightedNode && (e.source === highlightedNode || e.target === highlightedNode);
 
-      if (isHighlighted) {
-        ctx.strokeStyle = '#818cf8';
-        ctx.lineWidth = 2;
+      if (isHl) {
+        ctx.strokeStyle = '#4f46e5';
+        ctx.lineWidth = 2.5;
         ctx.globalAlpha = 0.9;
       } else {
-        ctx.strokeStyle = e.color;
-        ctx.lineWidth = 0.5;
-        ctx.globalAlpha = 0.4;
+        // Edge color by type
+        switch (e.type) {
+          case 'influenced': case 'teacher_of': case 'student_of':
+            ctx.strokeStyle = '#94a3b8'; break;
+          case 'debated': case 'criticized':
+            ctx.strokeStyle = '#fca5a5'; break;
+          case 'transmitted_to':
+            ctx.strokeStyle = '#6ee7b7'; break;
+          case 'parallels':
+            ctx.strokeStyle = '#fde68a'; break;
+          default:
+            ctx.strokeStyle = '#e2e8f0'; break;
+        }
+        ctx.lineWidth = 0.8;
+        ctx.globalAlpha = 0.3;
       }
 
       ctx.beginPath();
-      // Curved edges for cross-region connections
-      const dx = target.x - source.x;
-      const dy = target.y - source.y;
+      ctx.moveTo(a.x, a.y);
+
+      // Gentle curve for longer edges
+      const dx = b.x - a.x;
+      const dy = b.y - a.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist > 200 && e.type !== 'belongs_to' && e.type !== 'wrote') {
-        // Curved
-        const mx = (source.x + target.x) / 2 - dy * 0.1;
-        const my = (source.y + target.y) / 2 + dx * 0.1;
-        ctx.moveTo(source.x, source.y);
-        ctx.quadraticCurveTo(mx, my, target.x, target.y);
+      if (dist > 150) {
+        const mx = (a.x + b.x) / 2 - dy * 0.08;
+        const my = (a.y + b.y) / 2 + dx * 0.08;
+        ctx.quadraticCurveTo(mx, my, b.x, b.y);
       } else {
-        ctx.moveTo(source.x, source.y);
-        ctx.lineTo(target.x, target.y);
+        ctx.lineTo(b.x, b.y);
       }
       ctx.stroke();
-    });
-    ctx.globalAlpha = 1.0;
-
-    // Draw nodes (sorted: traditions on top)
-    const sortedNodes = [...nodes].sort((a, b) => {
-      const order: Record<string, number> = { text: 0, concept: 1, author: 2, tradition: 3 };
-      return (order[a.type] || 0) - (order[b.type] || 0);
+      ctx.globalAlpha = 1.0;
     });
 
-    sortedNodes.forEach(node => {
-      const isHighlighted = node.id === highlightedNode;
-      const isHovered = hoveredNode?.id === node.id;
-      const active = isHighlighted || isHovered;
-      const size = active ? node.size * 1.8 : node.size;
-      ctx.globalAlpha = active ? 1.0 : node.opacity;
+    // Draw nodes — traditions first (as big background circles), then authors
+    // Sort: traditions last so they draw on top
+    const sorted = [...nodes].sort((a, b) => {
+      if (a.type === 'tradition' && b.type !== 'tradition') return 1;
+      if (a.type !== 'tradition' && b.type === 'tradition') return -1;
+      return 0;
+    });
 
-      // Glow effect for traditions
+    sorted.forEach(node => {
+      const isHl = node.id === highlightedNode;
+      const isHov = hoveredNode?.id === node.id;
+      const active = isHl || isHov;
+
       if (node.type === 'tradition') {
+        // Large soft circle as cluster background
+        const bgR = 90;
         ctx.beginPath();
-        const gradient = ctx.createRadialGradient(node.x, node.y, 0, node.x, node.y, size * 3);
-        gradient.addColorStop(0, node.color + '30');
-        gradient.addColorStop(1, node.color + '00');
-        ctx.fillStyle = gradient;
-        ctx.arc(node.x, node.y, size * 3, 0, Math.PI * 2);
+        ctx.arc(node.x, node.y, bgR, 0, Math.PI * 2);
+        ctx.fillStyle = node.color + '0d'; // very subtle fill
         ctx.fill();
-      }
-
-      ctx.beginPath();
-      if (node.type === 'tradition') {
-        // Diamond with fill
-        ctx.moveTo(node.x, node.y - size);
-        ctx.lineTo(node.x + size, node.y);
-        ctx.lineTo(node.x, node.y + size);
-        ctx.lineTo(node.x - size, node.y);
-        ctx.closePath();
-        ctx.fillStyle = node.color;
-        ctx.fill();
-        ctx.strokeStyle = '#ffffff40';
+        ctx.strokeStyle = node.color + '25';
         ctx.lineWidth = 1;
         ctx.stroke();
-      } else if (node.type === 'text') {
-        // Small filled square
-        const s = size * 0.7;
-        ctx.rect(node.x - s, node.y - s, s * 2, s * 2);
-        ctx.fillStyle = node.color;
-        ctx.fill();
-      } else if (node.type === 'concept') {
-        // Triangle
-        ctx.moveTo(node.x, node.y - size);
-        ctx.lineTo(node.x + size * 0.87, node.y + size * 0.5);
-        ctx.lineTo(node.x - size * 0.87, node.y + size * 0.5);
+
+        // Inner diamond
+        const s = active ? 14 : 10;
+        ctx.beginPath();
+        ctx.moveTo(node.x, node.y - s);
+        ctx.lineTo(node.x + s, node.y);
+        ctx.lineTo(node.x, node.y + s);
+        ctx.lineTo(node.x - s, node.y);
         ctx.closePath();
-        ctx.fillStyle = '#eab308';
-        ctx.fill();
-      } else {
-        // Circle for authors — with border ring
-        ctx.arc(node.x, node.y, size, 0, Math.PI * 2);
         ctx.fillStyle = node.color;
         ctx.fill();
         if (active) {
-          ctx.strokeStyle = '#ffffff';
+          ctx.strokeStyle = node.color;
+          ctx.lineWidth = 3;
+          ctx.stroke();
+        }
+
+        // Label always visible
+        ctx.font = 'bold 11px Inter, system-ui, sans-serif';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillStyle = node.color;
+        ctx.fillText(node.label, node.x, node.y + s + 6);
+
+      } else {
+        // Author node
+        const s = active ? node.size * 1.8 : node.size;
+        ctx.globalAlpha = active ? 1.0 : node.alpha;
+
+        // Circle
+        ctx.beginPath();
+        ctx.arc(node.x, node.y, s, 0, Math.PI * 2);
+        ctx.fillStyle = node.color;
+        ctx.fill();
+
+        if (active) {
+          ctx.strokeStyle = '#1e1e1e';
           ctx.lineWidth = 2;
           ctx.stroke();
         }
-      }
 
-      // Labels
-      const showLabel = active || node.type === 'tradition' ||
-        (transform.scale > 1.2 && node.type === 'author') ||
-        (transform.scale > 2.0);
+        // Label on hover/highlight or when zoomed in
+        if (active || transform.scale > 1.5 || (transform.scale > 1.0 && node.size > 8)) {
+          ctx.font = `${active ? '11' : '9'}px Inter, system-ui, sans-serif`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'top';
+          ctx.fillStyle = '#374151';
+          ctx.fillText(node.label, node.x, node.y + s + 4);
+        }
 
-      if (showLabel) {
-        const fontSize = node.type === 'tradition' ? 11 : active ? 11 : 8;
-        ctx.font = `${node.type === 'tradition' ? 'bold ' : ''}${fontSize}px Inter, system-ui, sans-serif`;
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'top';
-
-        // Text shadow for readability
-        ctx.fillStyle = '#000000';
-        ctx.globalAlpha = 0.6;
-        ctx.fillText(node.label, node.x + 1, node.y + size + 5);
-        ctx.globalAlpha = active ? 1.0 : node.opacity;
-        ctx.fillStyle = node.type === 'tradition' ? '#ffffff' : '#cccccc';
-        ctx.fillText(node.label, node.x, node.y + size + 4);
+        ctx.globalAlpha = 1.0;
       }
     });
 
-    ctx.globalAlpha = 1.0;
     ctx.restore();
-  }, [transform, highlightedNode, hoveredNode, graphData]);
+  }, [transform, highlightedNode, hoveredNode]);
 
-  useEffect(() => { draw(); }, [draw]);
-
+  // Main loop
   useEffect(() => {
-    const handleResize = () => draw();
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
-  }, [draw]);
+    let running = true;
+    const loop = () => {
+      if (!running) return;
+      if (!settled) simulate();
+      draw();
+      animRef.current = requestAnimationFrame(loop);
+    };
+    loop();
+    return () => { running = false; cancelAnimationFrame(animRef.current); };
+  }, [simulate, draw, settled]);
 
+  // Mouse handlers
   const findNodeAt = useCallback((clientX: number, clientY: number): GraphNode | null => {
     const canvas = canvasRef.current;
     if (!canvas) return null;
@@ -441,16 +433,16 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
     const mx = (clientX - rect.left - rect.width / 2 - transform.x) / transform.scale;
     const my = (clientY - rect.top - rect.height / 2 - transform.y) / transform.scale;
 
-    // Check traditions first (priority), then authors, then others
-    const sorted = [...nodesRef.current].sort((a, b) => {
-      const order: Record<string, number> = { tradition: 3, author: 2, concept: 1, text: 0 };
-      return (order[b.type] || 0) - (order[a.type] || 0);
-    });
-    for (const node of sorted) {
-      const dx = mx - node.x;
-      const dy = my - node.y;
-      const hitSize = node.size + (node.type === 'tradition' ? 8 : 4);
-      if (dx * dx + dy * dy < hitSize * hitSize) return node;
+    // Traditions first (priority)
+    for (const node of nodesRef.current) {
+      if (node.type !== 'tradition') continue;
+      const dx = mx - node.x, dy = my - node.y;
+      if (dx * dx + dy * dy < 15 * 15) return node;
+    }
+    for (const node of nodesRef.current) {
+      if (node.type === 'tradition') continue;
+      const dx = mx - node.x, dy = my - node.y;
+      if (dx * dx + dy * dy < (node.size + 4) * (node.size + 4)) return node;
     }
     return null;
   }, [transform]);
@@ -459,7 +451,6 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
     setDragging(true);
     setDragStart({ x: e.clientX - transform.x, y: e.clientY - transform.y });
   };
-
   const handleMouseMove = (e: React.MouseEvent) => {
     setMousePos({ x: e.clientX, y: e.clientY });
     if (dragging) {
@@ -470,27 +461,19 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
       if (canvasRef.current) canvasRef.current.style.cursor = node ? 'pointer' : 'grab';
     }
   };
-
   const handleMouseUp = () => setDragging(false);
-
   const handleClick = (e: React.MouseEvent) => {
     const node = findNodeAt(e.clientX, e.clientY);
     if (node) onNodeClick(node.id, node.type);
   };
-
   const handleWheel = (e: React.WheelEvent) => {
     e.preventDefault();
-    const factor = e.deltaY > 0 ? 0.9 : 1.1;
-    setTransform(t => ({ ...t, scale: Math.max(0.1, Math.min(8, t.scale * factor)) }));
+    const f = e.deltaY > 0 ? 0.9 : 1.1;
+    setTransform(t => ({ ...t, scale: Math.max(0.15, Math.min(10, t.scale * f)) }));
   };
 
-  // Tradition color legend
-  const visibleTraditions = useMemo(() => {
-    return traditions.slice(0, 20).map(t => ({ name: t.name, color: t.color }));
-  }, []);
-
   return (
-    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative', background: '#0a0a0a' }}>
+    <div ref={containerRef} style={{ width: '100%', height: '100%', position: 'relative', background: '#fff' }}>
       <canvas
         ref={canvasRef}
         style={{ width: '100%', height: '100%', cursor: 'grab' }}
@@ -508,20 +491,24 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
           position: 'absolute',
           left: mousePos.x - (containerRef.current?.getBoundingClientRect().left || 0) + 14,
           top: mousePos.y - (containerRef.current?.getBoundingClientRect().top || 0) - 10,
-          background: '#1a1a1a',
-          border: '1px solid #333',
+          background: '#fff',
+          border: '1px solid #e5e7eb',
           borderRadius: 8,
           padding: '8px 12px',
           fontSize: 12,
-          color: '#e0e0e0',
-          boxShadow: '0 4px 16px rgba(0,0,0,0.4)',
+          color: '#1f2937',
+          boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
           zIndex: 100,
           pointerEvents: 'none',
-          maxWidth: 260,
+          maxWidth: 280,
         }}>
-          <div style={{ fontWeight: 600, marginBottom: 2, color: hoveredNode.color }}>{hoveredNode.label}</div>
-          <div style={{ fontSize: 10, color: '#888' }}>
-            {hoveredNode.type}{hoveredNode.tradition ? ` · ${hoveredNode.tradition.replace(/-/g, ' ')}` : ''}
+          <div style={{ fontWeight: 600, marginBottom: 2 }}>
+            <span style={{ display: 'inline-block', width: 8, height: 8, borderRadius: '50%', background: hoveredNode.color, marginRight: 6 }} />
+            {hoveredNode.label}
+          </div>
+          <div style={{ fontSize: 10, color: '#6b7280' }}>
+            {hoveredNode.type === 'tradition' ? 'Tradition' : 'Author'}
+            {hoveredNode.tradition && hoveredNode.type !== 'tradition' ? ` · ${hoveredNode.tradition.replace(/-/g, ' ')}` : ''}
             {hoveredNode.year ? ` · ${hoveredNode.year < 0 ? Math.abs(hoveredNode.year) + ' BCE' : hoveredNode.year + ' CE'}` : ''}
           </div>
         </div>
@@ -529,58 +516,45 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
 
       {/* Zoom controls */}
       <div style={{ position: 'absolute', bottom: 16, right: 16, display: 'flex', flexDirection: 'column', gap: 4 }}>
-        <button onClick={() => setTransform(t => ({ ...t, scale: Math.min(8, t.scale * 1.3) }))}
-          style={{ width: 32, height: 32, border: '1px solid #333', borderRadius: 6, background: '#1a1a1a', color: '#ccc', cursor: 'pointer', fontSize: 16 }}>+</button>
-        <button onClick={() => setTransform(t => ({ ...t, scale: Math.max(0.1, t.scale / 1.3) }))}
-          style={{ width: 32, height: 32, border: '1px solid #333', borderRadius: 6, background: '#1a1a1a', color: '#ccc', cursor: 'pointer', fontSize: 16 }}>−</button>
-        <button onClick={() => setTransform({ x: 0, y: 0, scale: 0.85 })}
-          style={{ width: 32, height: 32, border: '1px solid #333', borderRadius: 6, background: '#1a1a1a', color: '#ccc', cursor: 'pointer', fontSize: 11 }}>⟳</button>
+        {[
+          { label: '+', action: () => setTransform(t => ({ ...t, scale: Math.min(10, t.scale * 1.4) })) },
+          { label: '−', action: () => setTransform(t => ({ ...t, scale: Math.max(0.15, t.scale / 1.4) })) },
+          { label: '⟳', action: () => { setTransform({ x: 0, y: 0, scale: 0.7 }); setSettled(false); iterRef.current = 0; nodesRef.current = graphData.nodes.map(n => ({ ...n })); } },
+        ].map(b => (
+          <button key={b.label} onClick={b.action} style={{
+            width: 34, height: 34, border: '1px solid #e5e7eb', borderRadius: 8,
+            background: '#fff', color: '#374151', cursor: 'pointer', fontSize: 16,
+            boxShadow: '0 1px 3px rgba(0,0,0,0.06)',
+          }}>{b.label}</button>
+        ))}
       </div>
 
       {/* Legend */}
       <div style={{
-        position: 'absolute',
-        bottom: 16,
-        left: 16,
-        background: '#1a1a1aee',
-        border: '1px solid #333',
-        borderRadius: 8,
-        padding: '10px 14px',
-        fontSize: 10,
-        color: '#aaa',
-        maxWidth: 220,
-        maxHeight: 300,
-        overflowY: 'auto',
+        position: 'absolute', bottom: 16, left: 16,
+        background: '#ffffffee', border: '1px solid #e5e7eb', borderRadius: 10,
+        padding: '12px 16px', fontSize: 10, color: '#6b7280',
+        maxWidth: 200, boxShadow: '0 1px 4px rgba(0,0,0,0.05)',
       }}>
-        <div style={{ fontWeight: 700, marginBottom: 6, fontSize: 11, color: '#ddd' }}>Traditions</div>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: 3 }}>
-          {visibleTraditions.map(t => (
-            <div key={t.name} style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
-              <span style={{ width: 8, height: 8, borderRadius: '50%', background: t.color, flexShrink: 0 }} />
-              <span>{t.name}</span>
+        <div style={{ fontWeight: 700, fontSize: 11, color: '#1f2937', marginBottom: 6 }}>Legend</div>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '4px 12px', marginBottom: 8 }}>
+          {traditions.slice(0, 14).map(t => (
+            <div key={t.id} style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
+              <span style={{ width: 7, height: 7, borderRadius: '50%', background: t.color, flexShrink: 0 }} />
+              <span style={{ whiteSpace: 'nowrap' }}>{t.name.length > 18 ? t.name.slice(0, 16) + '…' : t.name}</span>
             </div>
           ))}
         </div>
-        <div style={{ marginTop: 8, borderTop: '1px solid #333', paddingTop: 6 }}>
-          <div style={{ fontWeight: 700, marginBottom: 4, fontSize: 11, color: '#ddd' }}>Shapes</div>
-          <div style={{ display: 'flex', gap: 10 }}>
-            <span>◆ Tradition</span>
-            <span>● Author</span>
-            <span>■ Text</span>
-            <span>▲ Concept</span>
-          </div>
+        <div style={{ borderTop: '1px solid #f3f4f6', paddingTop: 6, display: 'flex', gap: 10 }}>
+          <span>◆ Tradition</span>
+          <span>● Author</span>
         </div>
-        <div style={{ marginTop: 6, borderTop: '1px solid #333', paddingTop: 6 }}>
-          <div style={{ fontWeight: 700, marginBottom: 4, fontSize: 11, color: '#ddd' }}>Brightness</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 4 }}>
-            <span style={{ opacity: 0.3 }}>●</span>
-            <span>Ancient</span>
-            <span style={{ margin: '0 2px' }}>→</span>
-            <span style={{ opacity: 1.0 }}>●</span>
-            <span>Modern</span>
-          </div>
+        <div style={{ marginTop: 4, display: 'flex', alignItems: 'center', gap: 4 }}>
+          <span style={{ opacity: 0.3, color: '#374151' }}>●</span> ancient
+          <span style={{ margin: '0 2px', color: '#d1d5db' }}>→</span>
+          <span style={{ opacity: 1.0, color: '#374151' }}>●</span> modern
         </div>
-        <div style={{ marginTop: 4, color: '#666' }}>
+        <div style={{ marginTop: 4, color: '#9ca3af' }}>
           {graphData.nodes.length} nodes · {graphData.edges.length} edges
         </div>
       </div>
