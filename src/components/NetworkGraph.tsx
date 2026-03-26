@@ -35,11 +35,11 @@ interface GraphEdge {
 }
 
 // Force-directed layout parameters
-const REPULSION = 800;
-const ATTRACTION = 0.003;
-const TRADITION_GRAVITY = 0.02;
-const DAMPING = 0.85;
-const MIN_DIST = 30;
+const REPULSION = 4000;
+const ATTRACTION = 0.001;
+const TRADITION_GRAVITY = 0.008;
+const DAMPING = 0.82;
+const MIN_DIST = 60;
 
 function seeded(s: string): number {
   let h = 0;
@@ -56,7 +56,7 @@ const REGION_ORDER = [
 export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: NetworkGraphProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
-  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.7 });
+  const [transform, setTransform] = useState({ x: 0, y: 0, scale: 0.42 });
   const [dragging, setDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
   const [hoveredNode, setHoveredNode] = useState<GraphNode | null>(null);
@@ -95,7 +95,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
       trads.forEach(t => {
         if (!matchTradition([t.id]) || !matchSearch(t.name)) { globalIdx++; return; }
         const angle = (globalIdx / totalTrad) * Math.PI * 2 - Math.PI / 2;
-        const r = 500;
+        const r = 900;
         const x = Math.cos(angle) * r;
         const y = Math.sin(angle) * r;
         tradPositions.set(t.id, { x, y });
@@ -123,7 +123,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
           if (p) { bx = p.x; by = p.y; break; }
         }
 
-        const spread = 120;
+        const spread = 250;
         const ax = seeded(a.id);
         const ay = seeded(a.id + 'y');
 
@@ -182,9 +182,9 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
         let dy = b.y - a.y;
         let dist = Math.sqrt(dx * dx + dy * dy);
         if (dist < 1) { dist = 1; dx = Math.random() - 0.5; dy = Math.random() - 0.5; }
-        if (dist > 400) continue; // skip far nodes for perf
+        if (dist > 800) continue; // skip far nodes for perf
 
-        const minD = a.type === 'tradition' && b.type === 'tradition' ? 80 : MIN_DIST;
+        const minD = a.type === 'tradition' && b.type === 'tradition' ? 180 : MIN_DIST;
         const force = REPULSION / (dist * dist);
         const fx = (dx / dist) * force;
         const fy = (dy / dist) * force;
@@ -236,8 +236,8 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
       const node = nodeMap.get(t.id);
       if (!node) { gi++; return; }
       const angle = (gi / totalTrad) * Math.PI * 2 - Math.PI / 2;
-      const tx = Math.cos(angle) * 500;
-      const ty = Math.sin(angle) * 500;
+      const tx = Math.cos(angle) * 900;
+      const ty = Math.sin(angle) * 900;
       node.vx += (tx - node.x) * 0.005;
       node.vy += (ty - node.y) * 0.005;
       gi++;
@@ -519,7 +519,7 @@ export default function NetworkGraph({ filters, onNodeClick, highlightedNode }: 
         {[
           { label: '+', action: () => setTransform(t => ({ ...t, scale: Math.min(10, t.scale * 1.4) })) },
           { label: '−', action: () => setTransform(t => ({ ...t, scale: Math.max(0.15, t.scale / 1.4) })) },
-          { label: '⟳', action: () => { setTransform({ x: 0, y: 0, scale: 0.7 }); setSettled(false); iterRef.current = 0; nodesRef.current = graphData.nodes.map(n => ({ ...n })); } },
+          { label: '⟳', action: () => { setTransform({ x: 0, y: 0, scale: 0.42 }); setSettled(false); iterRef.current = 0; nodesRef.current = graphData.nodes.map(n => ({ ...n })); } },
         ].map(b => (
           <button key={b.label} onClick={b.action} style={{
             width: 34, height: 34, border: '1px solid #e5e7eb', borderRadius: 8,
