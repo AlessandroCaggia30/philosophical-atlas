@@ -1,5 +1,1 @@
-You are making too many requests to the API.
-Please follow the best practices at <https://www.mediawiki.org/wiki/Wikimedia_APIs/Rate_limits>.
-If you are unsure how to get the access you need, contact <bot-traffic@wikimedia.org>.
-
-request-id: 305c0fb0-7844-479e-b042-5058bd9421f2
+{"error":{"code":"missingtitle","info":"The page you specified doesn't exist.","docref":"See https://en.wikisource.org/w/api.php for API usage. Subscribe to the mediawiki-api-announce mailing list at &lt;https://lists.wikimedia.org/postorius/lists/mediawiki-api-announce.lists.wikimedia.org/&gt; for notice of API deprecations and breaking changes."},"servedby":"mw-api-ext.eqiad.main-66546fbcf5-zkxs5"}

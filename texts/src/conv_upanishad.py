@@ -10,7 +10,7 @@ import json, re, sys
 from ws_lib import to_lines, html_from_file
 
 ORD = r'(?:FIRST|SECOND|THIRD|FOURTH|FIFTH|SIXTH|SEVENTH|EIGHTH|NINTH|TENTH|ELEVENTH|TWELFTH|First|Second|Third|Fourth|Fifth|Sixth|Seventh|Eighth|Ninth|Tenth|Eleventh|Twelfth)'
-DIV = r'(?:ADHY[ÂA]YA|VALL[ÎI]|KHANDA|BR[ÂA]HMANA|PRAP[ÂA]THAKA|ANUV[ÂA]KA|Adhy[âa]ya|Vall[îi]|Khanda|Br[âa]hmana|Prap[âa]thaka|Anuv[âa]ka|Question|Mantra|Prasna)'
+DIV = r'(?:ADHY[ÂA]YA|VALL[ÎI]|KHANDA|BR[ÂA]HMANA|PRAP[ÂA]THAKA|ANUV[ÂA]KA|MUNDAKA|QUESTION|PRAP[ÂA]|Adhy[âa]ya|Vall[îi]|Khanda|Br[âa]hmana|Prap[âa]thaka|Anuv[âa]ka|Mundaka|Question|Mantra|Prasna)'
 HEADER_RE = re.compile(rf'^{ORD}\s+{DIV}\.?$')
 VERSE_RE = re.compile(r'^(\d+)\.\s+(.*)$')
 

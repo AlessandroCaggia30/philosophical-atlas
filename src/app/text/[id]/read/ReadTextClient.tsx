@@ -1,6 +1,7 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import type { CSSProperties } from 'react';
 import Link from 'next/link';
 import { texts } from '@/data/texts';
 import { authors } from '@/data/authors';
@@ -96,7 +97,7 @@ export default function ReadTextClient({ id }: { id: string }) {
       {viewMode === 'rendered' && (
         <div className="latex-content" style={{ animation: 'fadeIn 0.3s ease' }}>
           {full
-            ? <FullTextView tex={full.tex} />
+            ? <AudiobookReader tex={full.tex} title={text.title} author={author?.name || text.authorName || text.author} />
             : <RenderedView text={text} author={author} latexContent={latexContent} />}
         </div>
       )}
@@ -183,10 +184,115 @@ function cleanInline(s: string): string {
     .trim();
 }
 
-function FullTextView({ tex }: { tex: string }) {
-  const blocks = parseAtlasTex(tex);
+// ============================================================================
+// Audiobook reader.
+//
+// Renders the same public-domain body as before, but every numbered paragraph is
+// a play-head: click its number to begin narration there. Narration auto-advances
+// paragraph to paragraph and highlights the line being read.
+//
+// The voice engine is the browser's built-in Web Speech synthesiser — no backend,
+// which is what lets this work on a static GitHub Pages export. `speak()` is the
+// single seam: swap it for pre-rendered <audio> playback (e.g. ElevenLabs mp3s
+// shipped under public/audio/<id>/<n>.mp3) and nothing else in the UI changes.
+// ============================================================================
+
+// Read aloud ≠ read on screen: the screen keeps the original spelling, the
+// synthesiser gets a respelling of names it otherwise mangles. Shared across
+// texts; words not present just pass through untouched.
+const SPEECH_LEXICON: Record<string, string> = {
+  Eryximachus: 'Eh-rick-SIM-uh-kus', Alcibiades: 'Al-suh-BY-uh-deez',
+  Aristophanes: 'A-ris-TOFF-uh-neez', Diotima: 'Dye-oh-TEE-muh',
+  Pausanias: 'Paw-SAY-nee-us', Agathon: 'AG-uh-thon', Apollodorus: 'Uh-pol-oh-DOR-us',
+  Aristodemus: 'A-ris-toh-DEE-mus', Phaedrus: 'FEE-drus', Glaucon: 'GLOW-kon',
+  Phalerum: 'Fuh-LEER-um', Hephaestus: 'Heh-FESS-tus', Socrates: 'SOCK-ruh-teez',
+};
+function forSpeech(text: string): string {
+  let out = text;
+  for (const [w, say] of Object.entries(SPEECH_LEXICON)) {
+    out = out.replace(new RegExp(`\\b${w}\\b`, 'g'), say);
+  }
+  return out.replace(/\s*—\s*/g, ', ');   // an em-dash is a breath
+}
+
+interface ParaRef { blockIndex: number; num?: string; text: string }
+
+function AudiobookReader({ tex, title, author }: { tex: string; title: string; author: string }) {
+  const blocks = useMemo(() => parseAtlasTex(tex), [tex]);
+
+  // The narratable spine: paragraph blocks, in order. Their index is the play
+  // position. Non-para blocks (headings, attribution) are skipped by the voice.
+  const paras = useMemo<ParaRef[]>(() => {
+    const out: ParaRef[] = [];
+    blocks.forEach((b, blockIndex) => {
+      if (b.kind === 'para') out.push({ blockIndex, num: b.num, text: b.text });
+    });
+    return out;
+  }, [blocks]);
+  const paraIndexByBlock = useMemo(() => {
+    const m = new Map<number, number>();
+    paras.forEach((p, i) => m.set(p.blockIndex, i));
+    return m;
+  }, [paras]);
+
+  const [supported, setSupported] = useState(true);
+  const [open, setOpen] = useState(false);
+  const [active, setActive] = useState(-1);      // paragraph currently spoken
+  const [playing, setPlaying] = useState(false);
+  const [rate, setRate] = useState(1);
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [voiceURI, setVoiceURI] = useState('');
+
+  // Live values the auto-advance chain reads, so rate/voice changes take effect
+  // on the next paragraph without restarting playback.
+  const rateRef = useRef(rate); useEffect(() => { rateRef.current = rate; }, [rate]);
+  const voiceRef = useRef(voiceURI); useEffect(() => { voiceRef.current = voiceURI; }, [voiceURI]);
+  // Each spoken utterance carries a generation token; a superseded utterance's
+  // onend (which cancel() also fires) is ignored, so the chain never double-advances.
+  const genRef = useRef(0);
+
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('speechSynthesis' in window)) { setSupported(false); return; }
+    const load = () => {
+      const vs = window.speechSynthesis.getVoices().filter(v => v.lang.startsWith('en'));
+      setVoices(vs);
+      setVoiceURI(cur => cur || (
+        vs.find(v => /Daniel|Arthur|UK English Male/.test(v.name)) ||
+        vs.find(v => v.lang === 'en-GB') || vs.find(v => v.default) || vs[0]
+      )?.voiceURI || '');
+    };
+    load();
+    window.speechSynthesis.onvoiceschanged = load;
+    return () => { window.speechSynthesis.cancel(); window.speechSynthesis.onvoiceschanged = null; };
+  }, []);
+
+  const speak = useCallback((i: number) => {
+    if (i < 0 || i >= paras.length) { window.speechSynthesis.cancel(); setPlaying(false); setActive(-1); return; }
+    genRef.current += 1;
+    const myGen = genRef.current;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(forSpeech(paras[i].text));
+    u.rate = rateRef.current;
+    const v = voices.find(v => v.voiceURI === voiceRef.current);
+    if (v) u.voice = v;
+    u.onend = () => { if (myGen === genRef.current) speak(i + 1); };
+    window.speechSynthesis.speak(u);
+    setActive(i); setPlaying(true); setOpen(true);
+    if (typeof document !== 'undefined') {
+      document.getElementById(`para-${i}`)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+  }, [paras, voices]);
+
+  const stop = useCallback(() => { genRef.current += 1; window.speechSynthesis.cancel(); setPlaying(false); }, []);
+  const togglePlay = useCallback(() => {
+    const s = window.speechSynthesis;
+    if (playing) { s.pause(); setPlaying(false); }
+    else if (s.paused && active >= 0) { s.resume(); setPlaying(true); }
+    else speak(active >= 0 ? active : 0);
+  }, [playing, active, speak]);
+
   return (
-    <div style={{ maxWidth: 720, margin: '0 auto' }}>
+    <div style={{ maxWidth: 720, margin: '0 auto', paddingBottom: open ? 96 : 0 }}>
       {blocks.map((b, i) => {
         if (b.kind === 'work') return (
           <h2 key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 30, textAlign: 'center', margin: '0 0 4px', letterSpacing: '0.02em' }}>{b.text}</h2>
@@ -200,18 +306,115 @@ function FullTextView({ tex }: { tex: string }) {
         if (b.kind === 'heading') return (
           <h3 key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 19, margin: '32px 0 12px', color: 'var(--color-gold)' }}>{b.text}</h3>
         );
+        const pi = paraIndexByBlock.get(i)!;
+        const isActive = pi === active;
+        const label = b.num || String(pi + 1);
         return (
-          <p key={i} style={{ position: 'relative', fontSize: 17, lineHeight: 1.85, margin: '0 0 20px', textAlign: 'justify', fontFamily: 'var(--font-serif)' }}>
-            {b.num && (
-              <span style={{ position: 'absolute', left: -38, top: 4, fontSize: 11, color: 'var(--color-text-muted)', fontFamily: 'var(--font-mono)', userSelect: 'none' }}>{b.num}</span>
-            )}
+          <p key={i} id={`para-${pi}`} style={{
+            position: 'relative', fontSize: 17, lineHeight: 1.85, margin: '0 0 20px',
+            textAlign: 'justify', fontFamily: 'var(--font-serif)',
+            background: isActive ? 'var(--color-bg-tertiary)' : 'transparent',
+            boxShadow: isActive ? 'inset 3px 0 0 var(--color-gold)' : 'none',
+            borderRadius: isActive ? 4 : 0, padding: isActive ? '6px 10px 6px 14px' : '6px 0',
+            transition: 'background 0.25s, box-shadow 0.25s',
+          }}>
+            <button
+              onClick={() => (isActive && playing ? stop() : speak(pi))}
+              title={supported ? `Play from ${label}` : 'Audio not supported in this browser'}
+              disabled={!supported}
+              style={{
+                position: 'absolute', left: -46, top: 2, width: 34, height: 26,
+                display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+                fontSize: 11, fontFamily: 'var(--font-mono)',
+                color: isActive ? 'var(--color-gold)' : 'var(--color-text-muted)',
+                background: 'transparent', border: 'none',
+                cursor: supported ? 'pointer' : 'default', userSelect: 'none',
+              }}
+              onMouseEnter={e => { if (supported) e.currentTarget.style.color = 'var(--color-accent)'; }}
+              onMouseLeave={e => { e.currentTarget.style.color = isActive ? 'var(--color-gold)' : 'var(--color-text-muted)'; }}
+            >
+              {isActive && playing ? '❚❚' : label}
+            </button>
             {b.text}
           </p>
         );
       })}
+
+      {/* Floating open button */}
+      {supported && !open && (
+        <button onClick={() => (active >= 0 ? setOpen(true) : speak(0))}
+          style={{
+            position: 'fixed', right: 24, bottom: 24, zIndex: 50,
+            display: 'flex', alignItems: 'center', gap: 8, padding: '12px 20px',
+            borderRadius: 9999, border: '1px solid var(--color-border)',
+            background: 'var(--color-gold)', color: '#1a1410', fontWeight: 600, fontSize: 14,
+            cursor: 'pointer', boxShadow: '0 6px 20px rgba(0,0,0,0.25)',
+          }}>
+          🎧 Listen
+        </button>
+      )}
+
+      {/* Player bar */}
+      {supported && open && (
+        <div style={{
+          position: 'fixed', left: 0, right: 0, bottom: 0, zIndex: 50,
+          background: 'var(--color-bg-secondary)', borderTop: '1px solid var(--color-border)',
+          padding: '12px 20px', display: 'flex', alignItems: 'center', gap: 16,
+          flexWrap: 'wrap', boxShadow: '0 -4px 20px rgba(0,0,0,0.15)',
+        }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+            <button onClick={() => speak(Math.max(0, (active < 0 ? 0 : active) - 1))} title="Previous" style={pbtn}>⏮</button>
+            <button onClick={togglePlay} title={playing ? 'Pause' : 'Play'} style={{ ...pbtn, width: 44, height: 44, fontSize: 18, background: 'var(--color-gold)', color: '#1a1410', border: 'none' }}>
+              {playing ? '❚❚' : '▶'}
+            </button>
+            <button onClick={() => speak((active < 0 ? -1 : active) + 1)} title="Next" style={pbtn}>⏭</button>
+          </div>
+
+          <div style={{ fontSize: 13, color: 'var(--color-text-secondary)', minWidth: 120, flex: 1 }}>
+            <div style={{ fontWeight: 600, color: 'var(--color-text)' }}>{title}</div>
+            <div style={{ color: 'var(--color-text-muted)' }}>
+              {active >= 0 ? `¶ ${paras[active].num || active + 1} of ${paras.length}` : `${author} · ${paras.length} paragraphs`}
+            </div>
+          </div>
+
+          <label style={{ fontSize: 12, color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
+            Speed
+            <select value={rate} onChange={e => setRate(Number(e.target.value))} style={psel}>
+              {[0.8, 0.9, 1, 1.1, 1.25, 1.5].map(r => <option key={r} value={r}>{r}×</option>)}
+            </select>
+          </label>
+
+          {voices.length > 0 && (
+            <label style={{ fontSize: 12, color: 'var(--color-text-muted)', display: 'flex', alignItems: 'center', gap: 6 }}>
+              Voice
+              <select value={voiceURI} onChange={e => setVoiceURI(e.target.value)} style={{ ...psel, maxWidth: 160 }}>
+                {voices.map(v => <option key={v.voiceURI} value={v.voiceURI}>{v.name}</option>)}
+              </select>
+            </label>
+          )}
+
+          <button onClick={() => { stop(); setOpen(false); }} title="Close" style={{ ...pbtn, border: 'none' }}>✕</button>
+        </div>
+      )}
+
+      {!supported && (
+        <div style={{ maxWidth: 700, margin: '24px auto 0', padding: 12, fontSize: 12, color: 'var(--color-text-muted)', textAlign: 'center' }}>
+          Read-aloud isn’t available in this browser. Try Chrome, Edge, or Safari.
+        </div>
+      )}
     </div>
   );
 }
+
+const pbtn: CSSProperties = {
+  width: 36, height: 36, borderRadius: 9999, border: '1px solid var(--color-border)',
+  background: 'var(--color-surface)', color: 'var(--color-text)', cursor: 'pointer', fontSize: 14,
+  display: 'inline-flex', alignItems: 'center', justifyContent: 'center',
+};
+const psel: CSSProperties = {
+  padding: '4px 8px', borderRadius: 6, border: '1px solid var(--color-border)',
+  background: 'var(--color-surface)', color: 'var(--color-text)', fontSize: 12, cursor: 'pointer',
+};
 
 function RenderedView({ text, author, latexContent }: { text: any; author: any; latexContent: string }) {
   const sections = parseLatexSections(latexContent);
