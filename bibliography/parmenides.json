@@ -1,0 +1,94 @@
+{
+  "authorId": "parmenides",
+  "authorName": "Parmenides of Elea",
+  "corpusNote": "Parmenides wrote one work: a hexameter poem, of which roughly 160 lines survive across 19 fragments — the largest continuous stretch of any Presocratic. We owe more than half of it to a single reader, Simplicius, who quoted at unusual length in the 6th century CE precisely because, as he says, the book had by then become rare. The poem's own three-part shape (proem, Way of Truth, Way of Opinion) is securely attested; the placement of individual fragments within the third part is not, and remains actively disputed.",
+  "referenceSystems": [
+    { "name": "Diels–Kranz", "abbrev": "DK", "note": "Parmenides = DK 28. A = testimonia; B = verbatim fragments B1–B19. DK's fragment order is itself a reconstruction and has been challenged." },
+    { "name": "Coxon", "abbrev": "Cox", "note": "Coxon, The Fragments of Parmenides (1986; rev. ed. 2009, ed. McKirahan) — the standard critical edition, with full testimonia and its own numbering." },
+    { "name": "Laks–Most", "abbrev": "LM", "note": "Early Greek Philosophy, Loeb (2016), vol. V." }
+  ],
+  "works": [
+    {
+      "id": "on-nature-parmenides",
+      "title": "On Nature (the Poem)",
+      "originalTitle": "Περὶ φύσεως",
+      "transliteration": "Peri physeōs",
+      "status": "fragmentary",
+      "genre": "didactic hexameter poem",
+      "language": "Ancient Greek (epic dialect, dactylic hexameter)",
+      "date": { "start": -490, "end": -470, "approximate": true, "note": "Undatable directly. Plato's Parmenides sets a meeting with a young Socrates around 450 BCE, which if taken seriously puts Parmenides' birth near 515 BCE; Apollodorus' dating (floruit 504/501) conflicts with it. The poem is usually placed in the first half of the 5th century." },
+      "extent": "About 160 hexameter lines survive in 19 fragments (DK 28 B1–B19). The proem (B1) runs 32 lines; B8, the longest, runs 61–62 verses and carries the deduction of the signs of what-is. The Way of Truth is thought to survive nearly complete; the Way of Opinion survives only in scraps, perhaps a tenth of what it was.",
+      "citations": ["DK 28 B1–B19", "Sextus Empiricus, Adv. Math. VII.111 (B1.1–30)", "Simplicius, In Physica 144.29–146.25 (B8)", "Simplicius, In De Caelo 557.20–558.2", "Proclus, In Timaeum (B1.29–30)", "Clement, Stromateis (B19)", "Plato, Sophist 237a, 258d (B7.1–2)"],
+      "transmission": "Two principal witnesses. Sextus Empiricus preserves the proem's first thirty lines, embedded in an allegorical reading of his own that must be stripped off. Simplicius, commenting on Aristotle's Physics and De Caelo, supplies more than half the known lines, including the whole of B8 — and explains that he transcribes at length 'because of the rarity of the book' in his time, which is our best evidence that a complete copy still existed in 6th-century Alexandria. Plato (Sophist), Aristotle, Plutarch, Clement, Proclus and Simplicius' contemporaries supply the rest in single lines and couplets.",
+      "authenticity": "Genuine. The disputes are arrangement, not attribution: where B4 and B5 belong, whether the Doxa fragments can be ordered at all, and whether DK's sequence for B2–B7 reflects the poem or Diels' reconstruction. The Pittsburgh and Italian scholarship of the last two decades has proposed several rearrangements.",
+      "summary": "PROEM (B1): the youth is carried by mares along the road of the goddess, through the gates of Night and Day, to be told 'all things' — both 'the unshaken heart of well-rounded truth' and 'the opinions of mortals, in which there is no true trust.' WAY OF TRUTH (B2–B8.49): the two ways of inquiry — that it is and cannot not be, and that it is not, which is unlearnable; what-is is ungenerated, imperishable, whole, unique, unmoving, complete; 'thinking and being are the same' (B3); the signs deduced in B8. WAY OF OPINION (B8.50–B19): a cosmology built on the two forms Light and Night, which mortals wrongly named — including the rings of fire and darkness, the moon lit by the sun ('night-shining, wandering round the earth, an alien light', B14), and an embryology.",
+      "editions": [
+        "Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 28",
+        "Coxon, The Fragments of Parmenides, rev. ed. (2009) — standard critical edition",
+        "Tarán, Parmenides (1965) — text, translation, commentary",
+        "Gallop, Parmenides of Elea: Fragments (1984) — Phoenix Presocratics, facing Greek",
+        "Laks & Most, Early Greek Philosophy, Loeb (2016), vol. V"
+      ],
+      "translations": [
+        "Gallop (1984) — literal, facing Greek",
+        "Coxon (2009)",
+        "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed. (1983), ch. 8",
+        "Burnet, Early Greek Philosophy (1892/1920) — public domain, complete",
+        "Freeman, Ancilla to the Pre-Socratic Philosophers (1948)"
+      ],
+      "publicDomain": true,
+      "onlineText": "http://philoctetes.free.fr/parmenides.htm",
+      "notes": "Teaching point: the poem is hexameter, in Homer's metre and dialect. Students who meet Parmenides only as an argument miss that the argument arrives in the voice of a goddess, at the end of a chariot journey. The form is doing philosophical work — the question of why an argument for the unreality of change should be delivered as a revelation is a live one (Palmer 2009, Miller)."
+    },
+    {
+      "id": "parmenides-laws",
+      "title": "Laws for the Eleans",
+      "status": "lost",
+      "genre": "legislation",
+      "language": "Ancient Greek",
+      "date": { "start": -480, "end": -460, "approximate": true },
+      "extent": "Lost; no text, and possibly never a text.",
+      "citations": ["DL IX.23", "Plutarch, Adversus Colotem 1126a–b", "Strabo VI.1.1"],
+      "transmission": "Diogenes Laertius IX.23: Parmenides 'is said to have legislated for his fellow-citizens.' Plutarch reports that the Eleans annually swore an oath to abide by Parmenides' laws; Strabo calls Elea well-governed thanks to Parmenides and Zeno.",
+      "authenticity": "Attributed. The tradition is consistent across three independent sources, which is unusual, and Elea's constitutional reputation supports it. Whether the laws were ever a written work under Parmenides' name is another matter.",
+      "summary": "A legal code for Elea. Nothing of its content survives.",
+      "editions": ["DK 28 A1, A12"],
+      "translations": ["Hicks, Diogenes Laertius, Loeb (1925) — public domain"],
+      "publicDomain": true,
+      "notes": "Listed because it is the only non-poetic production credited to Parmenides, and because it complicates the picture of him as a pure metaphysician."
+    },
+    {
+      "id": "parmenides-testimonia",
+      "title": "Testimonia (DK 28 A)",
+      "status": "non-authorial",
+      "genre": "testimonia collection",
+      "language": "Ancient Greek, some Latin",
+      "date": { "start": -380, "end": 600, "approximate": true },
+      "extent": "54 testimonia in DK 28 A.",
+      "citations": ["DK 28 A", "Plato, Parmenides 127a–128e", "Plato, Theaetetus 183e, Sophist 237a, 241d", "Aristotle, Metaphysics 986b18–987a2", "Aristotle, Physics 186a22–187a11", "Simplicius, In Physica"],
+      "transmission": "Plato's Parmenides and Sophist are the earliest and most consequential; Aristotle's Metaphysics A.5 and Physics A.2–3 set the interpretive frame that dominated for two millennia — Parmenides as the monist who denied change and so had to be refuted before physics could begin.",
+      "authenticity": "Not by Parmenides. Aristotle's framing in particular should be taught as an interpretation: whether Parmenides was a numerical monist (only one thing exists) is now widely doubted, with Palmer, Curd and others reading him instead as arguing about what any genuine entity must be like.",
+      "summary": "The reception: Plato's dramatic portrait of the aged Parmenides examining a young Socrates; the Eleatic school as Aristotle constructed it; the doxographic tradition on the two forms and the cosmology; the biographical notices (pupil of Ameinias the Pythagorean, legislator, a herō-cult at Elea attested by a 1st-century CE inscription naming him 'Parmeneides son of Pyres, natural philosopher').",
+      "editions": ["Diels–Kranz, ch. 28 A", "Coxon (2009), which prints the testimonia in full", "Laks & Most, Loeb (2016), vol. V"],
+      "translations": ["Coxon (2009)", "Kirk, Raven & Schofield, ch. 8"],
+      "publicDomain": true,
+      "notes": "The Elea inscription (Parmeneides Pyrētos Ouliadēs physikos) is archaeological rather than textual evidence and is worth flagging separately in the atlas — it ties Parmenides to a healing cult of Apollo Oulios, which bears on how to read the poem's revelatory frame."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Parmenides (dialogue)",
+      "reason": "Plato's dialogue named after him, not a work by him. A recurring cataloguing confusion in student bibliographies.",
+      "actualAuthor": "Plato"
+    }
+  ],
+  "sources": [
+    "Stanford Encyclopedia of Philosophy, 'Parmenides' (verified: Sextus preserves the proem, Simplicius supplies more than half the surviving lines, B8 runs to 62 verses)",
+    "Diels–Kranz, Die Fragmente der Vorsokratiker, ch. 28",
+    "Coxon, The Fragments of Parmenides, rev. ed. (2009)",
+    "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed.",
+    "Diogenes Laertius, Lives IX.21–23"
+  ],
+  "compiled": "2026-07-23",
+  "confidence": "high"
+}

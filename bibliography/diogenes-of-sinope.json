@@ -1,0 +1,88 @@
+{
+  "authorId": "diogenes-of-sinope",
+  "authorName": "Diogenes of Sinope (the Cynic)",
+  "corpusNote": "Diogenes the Cynic is the philosopher of the deed, not the text — his teaching was his life, staged in the Athenian and Corinthian marketplace as living performance (the barrel, the lantern by daylight, the reply to Alexander). Whether he wrote at all was disputed already in antiquity: Diogenes Laertius VI.80 records both a list of works (on the authority of Sotion) and the flat claim of Sosicrates and Satyrus that he left nothing. Nothing survives except sayings (chreiai) and anecdotes, transmitted through Diogenes Laertius Book VI and the gnomological tradition. The corpus below is therefore a corpus of disputed titles plus the anecdote-tradition that is the real vehicle of Cynicism.",
+  "referenceSystems": [
+    { "name": "Diogenes Laertius VI", "abbrev": "DL VI", "note": "Lives VI.20–81 = the life of Diogenes and the primary source for the titles and the chreiai." },
+    { "name": "Giannantoni SSR", "abbrev": "SSR", "note": "Giannantoni, Socratis et Socraticorum Reliquiae (1990), vol. II — collects all fragments and testimonia of Diogenes and the Cynics (section V B)." }
+  ],
+  "works": [
+    {
+      "id": "diogenes-republic",
+      "title": "Republic (Politeia)",
+      "originalTitle": "Πολιτεία",
+      "transliteration": "Politeia",
+      "status": "lost",
+      "genre": "political / utopian treatise",
+      "language": "Ancient Greek",
+      "date": { "start": -360, "end": -324, "approximate": true },
+      "extent": "Lost. Known from hostile reports and a few paraphrased doctrines.",
+      "citations": ["DL VI.80 (in the list of works)", "Philodemus, On the Stoics (P.Herc. 155/339)", "DL VII.4, VII.34 (the Stoics' embarrassment over it)"],
+      "transmission": "Reported chiefly by opponents. Philodemus' Herculaneum treatise On the Stoics discusses both Diogenes' and Zeno's Republics together as scandalous Cynic-Stoic texts; the Stoics later tried to deny or expurgate them.",
+      "authenticity": "Disputed. Its existence is well attested but some ancient Stoics denied Diogenes wrote it (to protect Zeno, whose own Republic depended on it); most modern scholars accept a genuine Cynic Republic underlies the reports.",
+      "summary": "A radically anti-conventional utopia: a society without money (knucklebones as currency), without temples, courts, or conventional marriage (community of wives and children), rejecting the incest taboo and even, in the most notorious reports, defending cannibalism — all as a reductio of nomos (convention) in favour of physis (nature). The founding document of Cynic political anarchism and the direct model for Zeno's Stoic Republic.",
+      "editions": ["Fragments in Giannantoni, SSR V B", "Discussion: Dawson, Cities of the Gods (1992)"],
+      "translations": ["Fragments in Hicks, Diogenes Laertius, Loeb (1925); SSR (Italian)"],
+      "publicDomain": true,
+      "notes": "Teaching point: the Cynic Republic and the Stoic Republic are the ancient world's most transgressive political texts, and the fact that the Stoa tried to suppress its own founder's version is a case study in how a school edits its origins."
+    },
+    {
+      "id": "diogenes-dialogues-tragedies",
+      "title": "Dialogues and Tragedies (Ichthyas, Jackdaw, Pordalos, Cephalion, Aristarchus, Sisyphus, Medea, and others)",
+      "originalTitle": "—",
+      "status": "lost",
+      "genre": "dialogues and tragedies",
+      "language": "Ancient Greek",
+      "date": { "start": -360, "end": -324, "approximate": true },
+      "extent": "Lost. Titles only, and the attribution itself contested.",
+      "citations": ["DL VI.80 (Sotion's list); DL VI.73 (the tragedies)"],
+      "transmission": "Diogenes Laertius VI.80 gives, on Sotion's authority, a list of dialogues (Cephalion, Ichthyas, Jackdaw/Koloios, Pordalos, the People of Athens, Republic, Art of Ethics, On Wealth, On Love, Theodorus, Hypsias, Aristarchus, On Death) and 'Letters'. VI.73 mentions seven tragedies (Helen, Thyestes, Heracles, Achilles, Medea, Chrysippus, Oedipus), which other sources reassign to Diogenes' pupil Philiscus of Aegina or to Pasiphon.",
+      "authenticity": "Doubtful throughout. Sosicrates and Satyrus (DL VI.80) held that Diogenes wrote nothing and that the tragedies were by Philiscus. The dialogues may be genuine Cynic works or later forgeries under his name.",
+      "summary": "The tragedies apparently dramatised Cynic themes (endurance, the critique of convention) through mythic figures. The dialogues covered ethics, wealth, love, and death. None survives beyond titles.",
+      "editions": ["Giannantoni, SSR V B"],
+      "translations": ["Hicks, Diogenes Laertius, Loeb (1925)"],
+      "publicDomain": true
+    },
+    {
+      "id": "diogenes-chreiai",
+      "title": "The sayings and anecdotes (chreiai)",
+      "originalTitle": "Χρεῖαι",
+      "transliteration": "Chreiai",
+      "status": "non-authorial",
+      "genre": "anecdote / apophthegm tradition",
+      "language": "Ancient Greek",
+      "date": { "start": -350, "end": 300, "approximate": true, "note": "Dates of the reporting and compiling sources, spanning six centuries." },
+      "extent": "Hundreds of sayings and anecdotes, the actual medium of Diogenes' philosophy. The largest concentration is Diogenes Laertius VI.20–81.",
+      "citations": ["DL VI.20–81", "Dio Chrysostom, Orations 4, 6, 8–10 (the Diogenes discourses)", "Plutarch, Moralia (numerous); Stobaeus, Anthology"],
+      "transmission": "The chreia — a pointed saying or act attached to a named figure — was a school exercise and a literary genre; Diogenes was its favourite subject. His teaching survives as this stream of anecdotes rather than as doctrine, which is itself the Cynic point.",
+      "authenticity": "Not 'written by' Diogenes; the anecdote-tradition IS the corpus, and its historical kernel is irrecoverable. But this is where Cynicism actually lives.",
+      "summary": "The canonical scenes: living in a storage-jar (pithos, mistranslated 'barrel'); carrying a lit lamp in daylight 'looking for a human being'; telling Alexander 'stand out of my light'; defacing the currency (paracharattein to nomisma — literally counterfeiting, taken as the emblem of revaluing all conventional values); masturbating in the agora and wishing hunger could be as easily relieved by rubbing the belly; being called 'a Socrates gone mad' (Plato); asceticism (askēsis), self-sufficiency (autarkeia), shamelessness (anaideia), and the training of the body against fortune. Cynic 'freedom of speech' (parrhēsia) and 'living according to nature'.",
+      "editions": ["DL VI in Dorandi's edition (2013); Giannantoni, SSR V B (complete)"],
+      "translations": ["Hicks, Diogenes Laertius, Loeb (1925) — public domain; Dobbin, The Cynic Philosophers (Penguin, 2012)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D6",
+      "notes": "Represent Diogenes in the atlas primarily through the chreiai, not the doubtful book-titles — the medium is the message for Cynicism."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "The seven tragedies (Medea, Thyestes, Heracles, etc.)",
+      "reason": "Attributed by some (Satyrus, Sosicrates in DL VI.80) not to Diogenes but to his pupil Philiscus of Aegina, or to Pasiphon.",
+      "actualAuthor": "Philiscus of Aegina (per Satyrus/Sosicrates)"
+    },
+    {
+      "title": "Letters of Diogenes (the 51 Cynic epistles)",
+      "reason": "The surviving collection of pseudonymous Cynic letters under Diogenes' name is a Hellenistic/Imperial rhetorical fiction, like the Heraclitus and Socrates letters.",
+      "actualAuthor": "Anonymous (Cynic epistolographers, 1st c. BCE–2nd c. CE)"
+    }
+  ],
+  "sources": [
+    "Diogenes Laertius, Lives VI.20–81",
+    "Giannantoni, Socratis et Socraticorum Reliquiae (1990), vol. II, sect. V B",
+    "Philodemus, On the Stoics (P.Herc.)",
+    "Dio Chrysostom, Diogenes discourses (Orr. 4, 6, 8–10)",
+    "Dudley, A History of Cynicism (1937)"
+  ],
+  "compiled": "2026-07-24",
+  "confidence": "high"
+}

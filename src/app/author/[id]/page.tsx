@@ -4,6 +4,8 @@
 import Link from 'next/link';
 import { authors } from '@/data/authors';
 import { texts } from '@/data/texts';
+import { fullTexts } from '@/data/fulltexts';
+import { textGroupings } from '@/data/text-groupings';
 import { traditions } from '@/data/traditions';
 import { concepts } from '@/data/concepts';
 import { edges } from '@/data/edges';
@@ -157,35 +159,106 @@ export default async function AuthorPage({ params }: { params: Promise<{ id: str
         </section>
       )}
 
-      {/* Major Texts */}
-      {authorTexts.length > 0 && (
-        <section style={{ marginBottom: 32 }}>
-          <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, marginBottom: 12, borderBottom: '1px solid var(--color-border)', paddingBottom: 6 }}>
-            Major Texts
-          </h2>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 }}>
-            {authorTexts.map(t => (
-              <Link key={t.id} href={`/text/${t.id}`} style={{ textDecoration: 'none' }}>
-                <div className="card">
-                  <h3 style={{ fontSize: 15, margin: '0 0 4px' }}>{t.title}</h3>
-                  {t.originalTitle && <div style={{ fontSize: 12, color: 'var(--color-text-muted)', fontStyle: 'italic', marginBottom: 4 }}>{t.originalTitle}</div>}
-                  <div style={{ fontSize: 12, color: 'var(--color-text-muted)', marginBottom: 6 }}>
-                    {t.date.approximate ? 'c. ' : ''}{formatYear(t.date.start)} · {t.originalLanguage} · {t.genre}
-                  </div>
-                  <p style={{ fontSize: 13, color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5 }}>
-                    {t.summary.length > 120 ? t.summary.slice(0, 120) + '…' : t.summary}
-                  </p>
-                  {t.publicDomain && t.latexContent && (
-                    <div style={{ marginTop: 6 }}>
-                      <span className="badge" style={{ background: 'var(--color-gold)', color: 'white', borderColor: 'var(--color-gold)' }}>Read text</span>
-                    </div>
-                  )}
+      {/* Major Texts — grouped by topic, chronological within each topic */}
+      {authorTexts.length > 0 && (() => {
+        // Preserved full-text-link card: gold border + "📖 Read full text →"
+        // badge for texts with a compiled full text, plain card otherwise.
+        const renderTextCard = (t: typeof authorTexts[number]) => {
+          const full = fullTexts[t.id];
+          return (
+            <Link key={t.id} href={full ? `/text/${t.id}/read` : `/text/${t.id}`} style={{ textDecoration: 'none' }}>
+              <div className="card" style={full ? { borderColor: 'var(--color-gold)' } : undefined}>
+                <h3 style={{ fontSize: 15, margin: '0 0 4px' }}>{t.title}</h3>
+                {t.originalTitle && <div style={{ fontSize: 12, color: 'var(--color-text-muted)', fontStyle: 'italic', marginBottom: 4 }}>{t.originalTitle}</div>}
+                <div style={{ fontSize: 12, color: 'var(--color-text-muted)', marginBottom: 6 }}>
+                  {t.date.approximate ? 'c. ' : ''}{formatYear(t.date.start)} · {t.originalLanguage} · {t.genre}
                 </div>
-              </Link>
-            ))}
-          </div>
-        </section>
-      )}
+                <p style={{ fontSize: 13, color: 'var(--color-text-secondary)', margin: 0, lineHeight: 1.5 }}>
+                  {t.summary.length > 120 ? t.summary.slice(0, 120) + '…' : t.summary}
+                </p>
+                {full ? (
+                  <div style={{ marginTop: 8, display: 'flex', alignItems: 'center', gap: 8, flexWrap: 'wrap' }}>
+                    <span className="badge" style={{ background: 'var(--color-gold)', color: 'white', borderColor: 'var(--color-gold)' }}>📖 Read full text →</span>
+                    <span style={{ fontSize: 11, color: 'var(--color-text-muted)' }}>
+                      {full.paragraphs} paras · trans. {full.translator}
+                    </span>
+                  </div>
+                ) : (
+                  <div style={{ marginTop: 8 }}>
+                    <span style={{ fontSize: 11, color: 'var(--color-text-muted)' }}>Details →</span>
+                  </div>
+                )}
+              </div>
+            </Link>
+          );
+        };
+
+        const gridStyle = { display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: 12 } as const;
+
+        // Single text: no grouping overhead.
+        if (authorTexts.length === 1) {
+          return (
+            <section style={{ marginBottom: 32 }}>
+              <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, marginBottom: 12, borderBottom: '1px solid var(--color-border)', paddingBottom: 6 }}>
+                Major Texts
+              </h2>
+              <div style={gridStyle}>{renderTextCard(authorTexts[0])}</div>
+            </section>
+          );
+        }
+
+        // Group by topic; sort each group by sortYear (ascending, BCE first).
+        const sortYearOf = (t: typeof authorTexts[number]) => textGroupings[t.id]?.sortYear ?? t.date.start;
+        const topicOf = (t: typeof authorTexts[number]) => textGroupings[t.id]?.topic ?? 'Metaphysics';
+
+        const byTopic = new Map<string, typeof authorTexts>();
+        for (const t of authorTexts) {
+          const topic = topicOf(t);
+          if (!byTopic.has(topic)) byTopic.set(topic, []);
+          byTopic.get(topic)!.push(t);
+        }
+
+        // Order topic groups by their earliest text year (chronological).
+        const groups = Array.from(byTopic.entries())
+          .map(([topic, ts]) => ({
+            topic,
+            texts: [...ts].sort((a, b) => sortYearOf(a) - sortYearOf(b)),
+          }))
+          .sort((a, b) => sortYearOf(a.texts[0]) - sortYearOf(b.texts[0]));
+
+        return (
+          <section style={{ marginBottom: 32 }}>
+            <h2 style={{ fontFamily: 'var(--font-serif)', fontSize: 20, marginBottom: 12, borderBottom: '1px solid var(--color-border)', paddingBottom: 6 }}>
+              Major Texts
+            </h2>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 24 }}>
+              {groups.map(g => (
+                <div key={g.topic}>
+                  <h3 style={{
+                    fontFamily: 'var(--font-serif)', fontSize: 16, margin: '0 0 10px',
+                    color: 'var(--color-text-secondary)', textTransform: 'uppercase', letterSpacing: '0.04em',
+                  }}>
+                    {g.topic}
+                    <span style={{ fontSize: 12, color: 'var(--color-text-muted)', marginLeft: 8, letterSpacing: 0, textTransform: 'none' }}>
+                      ({g.texts.length})
+                    </span>
+                  </h3>
+                  <div style={gridStyle}>
+                    {g.texts.map(t => (
+                      <div key={t.id} style={{ position: 'relative' }}>
+                        <div style={{ fontSize: 11, color: 'var(--color-text-muted)', marginBottom: 4 }}>
+                          {t.date.approximate ? 'c. ' : ''}{formatYear(t.date.start)}
+                        </div>
+                        {renderTextCard(t)}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        );
+      })()}
 
       {/* Related Concepts */}
       {authorConcepts.length > 0 && (

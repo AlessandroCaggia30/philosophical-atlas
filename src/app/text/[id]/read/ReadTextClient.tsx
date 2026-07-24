@@ -4,12 +4,14 @@ import { useState } from 'react';
 import Link from 'next/link';
 import { texts } from '@/data/texts';
 import { authors } from '@/data/authors';
+import { fullTexts } from '@/data/fulltexts';
 import { formatYear } from '@/lib/utils';
 
 type ViewMode = 'rendered' | 'latex' | 'parallel';
 
 export default function ReadTextClient({ id }: { id: string }) {
   const text = texts.find(t => t.id === id);
+  const full = fullTexts[id];
   const [viewMode, setViewMode] = useState<ViewMode>('rendered');
   const [copied, setCopied] = useState(false);
 
@@ -37,7 +39,7 @@ export default function ReadTextClient({ id }: { id: string }) {
   }
 
   const author = authors.find(a => a.id === text.author);
-  const latexContent = text.latexContent || generateDefaultLatex(text, author);
+  const latexContent = full?.tex || text.latexContent || generateDefaultLatex(text, author);
 
   const copyLatex = () => {
     navigator.clipboard.writeText(latexContent);
@@ -76,7 +78,7 @@ export default function ReadTextClient({ id }: { id: string }) {
       </header>
 
       <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginBottom: 32, flexWrap: 'wrap' }}>
-        {(['rendered', 'latex', 'parallel'] as ViewMode[]).map(mode => (
+        {((full ? ['rendered', 'latex'] : ['rendered', 'latex', 'parallel']) as ViewMode[]).map(mode => (
           <button key={mode} onClick={() => setViewMode(mode)}
             className={`filter-chip ${viewMode === mode ? 'active' : ''}`}
             style={{ padding: '6px 16px', fontSize: 13 }}>
@@ -93,7 +95,9 @@ export default function ReadTextClient({ id }: { id: string }) {
 
       {viewMode === 'rendered' && (
         <div className="latex-content" style={{ animation: 'fadeIn 0.3s ease' }}>
-          <RenderedView text={text} author={author} latexContent={latexContent} />
+          {full
+            ? <FullTextView tex={full.tex} />
+            : <RenderedView text={text} author={author} latexContent={latexContent} />}
         </div>
       )}
 
@@ -121,8 +125,90 @@ export default function ReadTextClient({ id }: { id: string }) {
       )}
 
       <div style={{ maxWidth: 700, margin: '40px auto 0', padding: 16, background: 'var(--color-bg-secondary)', borderRadius: 8, fontSize: 12, color: 'var(--color-text-muted)', textAlign: 'center', lineHeight: 1.6 }}>
-        <strong>Note:</strong> This is an AI-assisted scholarly translation intended for study and navigation.
+        {full ? (
+          <>
+            <strong>Public-domain edition.</strong>{' '}
+            {full.translator && <>Translated by {full.translator}{full.translationYear ? ` (${full.translationYear})` : ''}. </>}
+            {full.language}{full.sourceLanguage ? ` (from ${full.sourceLanguage})` : ''}. License: {full.license}.
+            {full.source && <> · <a href={full.source} target="_blank" rel="noopener noreferrer" style={{ color: 'var(--color-accent)' }}>Source</a></>}
+          </>
+        ) : (
+          <><strong>Note:</strong> This is an AI-assisted scholarly translation intended for study and navigation.</>
+        )}
       </div>
+    </div>
+  );
+}
+
+// Renders the controlled macro subset used by texts/*.tex:
+//   \work{...}  \attrib{who}{trans}  \section*{...}  \para[n] body...
+type Block =
+  | { kind: 'work'; text: string }
+  | { kind: 'attrib'; who: string; trans: string }
+  | { kind: 'heading'; text: string }
+  | { kind: 'para'; num?: string; text: string };
+
+function parseAtlasTex(tex: string): Block[] {
+  const blocks: Block[] = [];
+  // Split on blank lines: each chunk is one logical block.
+  for (const raw of tex.split(/\n\s*\n/)) {
+    const chunk = raw.trim();
+    if (!chunk) continue;
+
+    const work = chunk.match(/^\\work\{([\s\S]+?)\}$/);
+    if (work) { blocks.push({ kind: 'work', text: work[1].trim() }); continue; }
+
+    const attrib = chunk.match(/^\\attrib\{([\s\S]*?)\}\{([\s\S]*?)\}$/);
+    if (attrib) { blocks.push({ kind: 'attrib', who: attrib[1].trim(), trans: attrib[2].trim() }); continue; }
+
+    const heading = chunk.match(/^\\(?:sub)?section\*?\{([\s\S]+?)\}$/);
+    if (heading) { blocks.push({ kind: 'heading', text: heading[1].trim() }); continue; }
+
+    const para = chunk.match(/^\\para(?:\[([^\]]*)\])?\s*([\s\S]*)$/);
+    if (para) { blocks.push({ kind: 'para', num: para[1] || undefined, text: cleanInline(para[2]) }); continue; }
+
+    blocks.push({ kind: 'para', text: cleanInline(chunk) });
+  }
+  return blocks;
+}
+
+function cleanInline(s: string): string {
+  return s
+    .replace(/\\(?:textbf|textit|emph)\{(.+?)\}/g, '$1')
+    .replace(/---/g, '—')
+    .replace(/``|''/g, '"')
+    .replace(/\\,/g, ' ')
+    .replace(/\\%/g, '%')
+    .replace(/\s+/g, ' ')
+    .trim();
+}
+
+function FullTextView({ tex }: { tex: string }) {
+  const blocks = parseAtlasTex(tex);
+  return (
+    <div style={{ maxWidth: 720, margin: '0 auto' }}>
+      {blocks.map((b, i) => {
+        if (b.kind === 'work') return (
+          <h2 key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 30, textAlign: 'center', margin: '0 0 4px', letterSpacing: '0.02em' }}>{b.text}</h2>
+        );
+        if (b.kind === 'attrib') return (
+          <div key={i} style={{ textAlign: 'center', marginBottom: 36, paddingBottom: 20, borderBottom: '2px solid var(--color-gold)' }}>
+            <div style={{ fontSize: 16 }}>{b.who}</div>
+            <div style={{ fontSize: 13, fontStyle: 'italic', color: 'var(--color-text-muted)', marginTop: 2 }}>trans. {b.trans}</div>
+          </div>
+        );
+        if (b.kind === 'heading') return (
+          <h3 key={i} style={{ fontFamily: 'var(--font-serif)', fontSize: 19, margin: '32px 0 12px', color: 'var(--color-gold)' }}>{b.text}</h3>
+        );
+        return (
+          <p key={i} style={{ position: 'relative', fontSize: 17, lineHeight: 1.85, margin: '0 0 20px', textAlign: 'justify', fontFamily: 'var(--font-serif)' }}>
+            {b.num && (
+              <span style={{ position: 'absolute', left: -38, top: 4, fontSize: 11, color: 'var(--color-text-muted)', fontFamily: 'var(--font-mono)', userSelect: 'none' }}>{b.num}</span>
+            )}
+            {b.text}
+          </p>
+        );
+      })}
     </div>
   );
 }

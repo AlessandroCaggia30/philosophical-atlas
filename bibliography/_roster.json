@@ -1,0 +1,2066 @@
+[
+ {
+  "n": 1,
+  "id": "thales",
+  "name": "Thales",
+  "dates": [
+   -624,
+   -546
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 1,
+  "status": "done",
+  "works": 5,
+  "confidence": "high"
+ },
+ {
+  "n": 2,
+  "id": "anaximander",
+  "name": "Anaximander",
+  "dates": [
+   -610,
+   -546
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 1,
+  "status": "done",
+  "works": 5,
+  "confidence": "high"
+ },
+ {
+  "n": 3,
+  "id": "heraclitus",
+  "name": "Heraclitus",
+  "dates": [
+   -535,
+   -475
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 1,
+  "status": "done",
+  "works": 4,
+  "confidence": "high"
+ },
+ {
+  "n": 4,
+  "id": "parmenides",
+  "name": "Parmenides",
+  "dates": [
+   -515,
+   -450
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 1,
+  "status": "done",
+  "works": 3,
+  "confidence": "high"
+ },
+ {
+  "n": 5,
+  "id": "empedocles",
+  "name": "Empedocles",
+  "dates": [
+   -494,
+   -434
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 0,
+  "status": "done",
+  "works": 4,
+  "confidence": "high"
+ },
+ {
+  "n": 6,
+  "id": "democritus",
+  "name": "Democritus",
+  "dates": [
+   -460,
+   -370
+  ],
+  "tradition": "pre-socratic",
+  "currentTexts": 0,
+  "status": "done",
+  "works": 6,
+  "confidence": "high"
+ },
+ {
+  "n": 7,
+  "id": "socrates",
+  "name": "Socrates",
+  "dates": [
+   -470,
+   -399
+  ],
+  "tradition": "platonism",
+  "currentTexts": 0,
+  "status": "done",
+  "works": 5,
+  "confidence": "high"
+ },
+ {
+  "n": 8,
+  "id": "plato",
+  "name": "Plato",
+  "dates": [
+   -428,
+   -348
+  ],
+  "tradition": "platonism",
+  "currentTexts": 15,
+  "status": "done",
+  "works": 39,
+  "confidence": "high"
+ },
+ {
+  "n": 9,
+  "id": "aristotle",
+  "name": "Aristotle",
+  "dates": [
+   -384,
+   -322
+  ],
+  "tradition": "aristotelianism",
+  "currentTexts": 8,
+  "status": "done",
+  "works": 25,
+  "confidence": "high"
+ },
+ {
+  "n": 10,
+  "id": "diogenes-of-sinope",
+  "name": "Diogenes of Sinope",
+  "dates": [
+   -412,
+   -323
+  ],
+  "tradition": "cynicism",
+  "currentTexts": 0,
+  "status": "done",
+  "works": 3,
+  "confidence": "high"
+ },
+ {
+  "n": 11,
+  "id": "pyrrho",
+  "name": "Pyrrho",
+  "dates": [
+   -365,
+   -275
+  ],
+  "tradition": "skepticism",
+  "currentTexts": 0,
+  "status": "done",
+  "works": 3,
+  "confidence": "high"
+ },
+ {
+  "n": 12,
+  "id": "epicurus",
+  "name": "Epicurus",
+  "dates": [
+   -341,
+   -270
+  ],
+  "tradition": "epicureanism",
+  "currentTexts": 2,
+  "status": "done",
+  "works": 8,
+  "confidence": "high"
+ },
+ {
+  "n": 13,
+  "id": "zeno-of-citium",
+  "name": "Zeno of Citium",
+  "dates": [
+   -334,
+   -262
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 14,
+  "id": "chrysippus",
+  "name": "Chrysippus",
+  "dates": [
+   -279,
+   -206
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 15,
+  "id": "cicero",
+  "name": "Cicero",
+  "dates": [
+   -106,
+   -43
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 16,
+  "id": "lucretius",
+  "name": "Lucretius",
+  "dates": [
+   -99,
+   -55
+  ],
+  "tradition": "epicureanism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 17,
+  "id": "seneca",
+  "name": "Seneca",
+  "dates": [
+   -4,
+   65
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 18,
+  "id": "epictetus",
+  "name": "Epictetus",
+  "dates": [
+   50,
+   135
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 19,
+  "id": "marcus-aurelius",
+  "name": "Marcus Aurelius",
+  "dates": [
+   121,
+   180
+  ],
+  "tradition": "stoicism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 20,
+  "id": "plotinus",
+  "name": "Plotinus",
+  "dates": [
+   204,
+   270
+  ],
+  "tradition": "neoplatonism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 21,
+  "id": "porphyry",
+  "name": "Porphyry",
+  "dates": [
+   234,
+   305
+  ],
+  "tradition": "neoplatonism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 22,
+  "id": "proclus",
+  "name": "Proclus",
+  "dates": [
+   412,
+   485
+  ],
+  "tradition": "neoplatonism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 23,
+  "id": "hypatia",
+  "name": "Hypatia",
+  "dates": [
+   360,
+   415
+  ],
+  "tradition": "neoplatonism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 24,
+  "id": "sextus-empiricus",
+  "name": "Sextus Empiricus",
+  "dates": [
+   160,
+   210
+  ],
+  "tradition": "skepticism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 25,
+  "id": "buddha",
+  "name": "Siddhārtha Gautama (Buddha)",
+  "dates": [
+   -563,
+   -483
+  ],
+  "tradition": "theravada-buddhism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 26,
+  "id": "mahavira",
+  "name": "Mahavira",
+  "dates": [
+   -599,
+   -527
+  ],
+  "tradition": "jainism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 27,
+  "id": "kapila",
+  "name": "Kapila",
+  "dates": [
+   -600,
+   -500
+  ],
+  "tradition": "samkhya",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 28,
+  "id": "patanjali",
+  "name": "Patanjali",
+  "dates": [
+   -200,
+   200
+  ],
+  "tradition": "yoga-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 29,
+  "id": "gautama-aksapada",
+  "name": "Gautama Aksapada",
+  "dates": [
+   -200,
+   200
+  ],
+  "tradition": "nyaya",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 30,
+  "id": "kanada",
+  "name": "Kanada",
+  "dates": [
+   -600,
+   -200
+  ],
+  "tradition": "vaisheshika",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 31,
+  "id": "nagarjuna",
+  "name": "Nāgārjuna",
+  "dates": [
+   150,
+   250
+  ],
+  "tradition": "madhyamaka",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 32,
+  "id": "aryadeva",
+  "name": "Āryadeva",
+  "dates": [
+   170,
+   270
+  ],
+  "tradition": "madhyamaka",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 33,
+  "id": "asanga",
+  "name": "Asanga",
+  "dates": [
+   310,
+   390
+  ],
+  "tradition": "yogacara",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 34,
+  "id": "vasubandhu",
+  "name": "Vasubandhu",
+  "dates": [
+   316,
+   396
+  ],
+  "tradition": "yogacara",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 35,
+  "id": "dignaga",
+  "name": "Dignāga",
+  "dates": [
+   480,
+   540
+  ],
+  "tradition": "yogacara",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 36,
+  "id": "dharmakirti",
+  "name": "Dharmakīrti",
+  "dates": [
+   600,
+   660
+  ],
+  "tradition": "yogacara",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 37,
+  "id": "buddhaghosa",
+  "name": "Buddhaghosa",
+  "dates": [
+   370,
+   450
+  ],
+  "tradition": "theravada-buddhism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 38,
+  "id": "gaudapada",
+  "name": "Gaudapada",
+  "dates": [
+   500,
+   600
+  ],
+  "tradition": "advaita-vedanta",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 39,
+  "id": "shankara",
+  "name": "Ādi Śaṅkara",
+  "dates": [
+   788,
+   820
+  ],
+  "tradition": "advaita-vedanta",
+  "currentTexts": 3,
+  "status": "pending"
+ },
+ {
+  "n": 40,
+  "id": "ramanuja",
+  "name": "Rāmānuja",
+  "dates": [
+   1017,
+   1137
+  ],
+  "tradition": "vedanta",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 41,
+  "id": "madhva",
+  "name": "Madhva",
+  "dates": [
+   1238,
+   1317
+  ],
+  "tradition": "vedanta",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 42,
+  "id": "bhartrhari",
+  "name": "Bhartṛhari",
+  "dates": [
+   450,
+   510
+  ],
+  "tradition": "vedanta",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 43,
+  "id": "shantideva",
+  "name": "Śāntideva",
+  "dates": [
+   685,
+   763
+  ],
+  "tradition": "madhyamaka",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 44,
+  "id": "chandrakirti",
+  "name": "Candrakīrti",
+  "dates": [
+   600,
+   650
+  ],
+  "tradition": "madhyamaka",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 45,
+  "id": "kumarila-bhatta",
+  "name": "Kumārila Bhaṭṭa",
+  "dates": [
+   620,
+   680
+  ],
+  "tradition": "mimamsa",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 46,
+  "id": "vivekananda",
+  "name": "Swami Vivekananda",
+  "dates": [
+   1863,
+   1902
+  ],
+  "tradition": "advaita-vedanta",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 47,
+  "id": "aurobindo",
+  "name": "Sri Aurobindo",
+  "dates": [
+   1872,
+   1950
+  ],
+  "tradition": "vedanta",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 48,
+  "id": "gandhi",
+  "name": "Mahatma Gandhi",
+  "dates": [
+   1869,
+   1948
+  ],
+  "tradition": "vedanta",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 49,
+  "id": "ambedkar",
+  "name": "B.R. Ambedkar",
+  "dates": [
+   1891,
+   1956
+  ],
+  "tradition": "theravada-buddhism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 50,
+  "id": "confucius",
+  "name": "Confucius",
+  "dates": [
+   -551,
+   -479
+  ],
+  "tradition": "confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 51,
+  "id": "laozi",
+  "name": "Laozi",
+  "dates": [
+   -600,
+   -500
+  ],
+  "tradition": "daoism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 52,
+  "id": "zhuangzi",
+  "name": "Zhuangzi",
+  "dates": [
+   -369,
+   -286
+  ],
+  "tradition": "daoism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 53,
+  "id": "mencius",
+  "name": "Mencius",
+  "dates": [
+   -372,
+   -289
+  ],
+  "tradition": "confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 54,
+  "id": "xunzi",
+  "name": "Xunzi",
+  "dates": [
+   -310,
+   -235
+  ],
+  "tradition": "confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 55,
+  "id": "mozi",
+  "name": "Mozi",
+  "dates": [
+   -470,
+   -391
+  ],
+  "tradition": "mohism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 56,
+  "id": "han-fei",
+  "name": "Han Fei",
+  "dates": [
+   -280,
+   -233
+  ],
+  "tradition": "legalism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 57,
+  "id": "gongsun-long",
+  "name": "Gongsun Long",
+  "dates": [
+   -320,
+   -250
+  ],
+  "tradition": "school-of-names",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 58,
+  "id": "huineng",
+  "name": "Huineng",
+  "dates": [
+   638,
+   713
+  ],
+  "tradition": "zen-buddhism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 59,
+  "id": "zhu-xi",
+  "name": "Zhu Xi",
+  "dates": [
+   1130,
+   1200
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 60,
+  "id": "wang-yangming",
+  "name": "Wang Yangming",
+  "dates": [
+   1472,
+   1529
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 61,
+  "id": "zhang-zai",
+  "name": "Zhang Zai",
+  "dates": [
+   1020,
+   1077
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 62,
+  "id": "cheng-yi",
+  "name": "Cheng Yi",
+  "dates": [
+   1033,
+   1107
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 63,
+  "id": "lu-jiuyuan",
+  "name": "Lu Jiuyuan",
+  "dates": [
+   1139,
+   1193
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 64,
+  "id": "zhou-dunyi",
+  "name": "Zhou Dunyi",
+  "dates": [
+   1017,
+   1073
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 65,
+  "id": "wang-fuzhi",
+  "name": "Wang Fuzhi",
+  "dates": [
+   1619,
+   1692
+  ],
+  "tradition": "neo-confucianism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 66,
+  "id": "dai-zhen",
+  "name": "Dai Zhen",
+  "dates": [
+   1724,
+   1777
+  ],
+  "tradition": "confucianism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 67,
+  "id": "kukai",
+  "name": "Kūkai",
+  "dates": [
+   774,
+   835
+  ],
+  "tradition": "zen-buddhism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 68,
+  "id": "dogen",
+  "name": "Dōgen",
+  "dates": [
+   1200,
+   1253
+  ],
+  "tradition": "zen-buddhism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 69,
+  "id": "nishida-kitaro",
+  "name": "Nishida Kitarō",
+  "dates": [
+   1870,
+   1945
+  ],
+  "tradition": "kyoto-school",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 70,
+  "id": "tanabe-hajime",
+  "name": "Tanabe Hajime",
+  "dates": [
+   1885,
+   1962
+  ],
+  "tradition": "kyoto-school",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 71,
+  "id": "nishitani-keiji",
+  "name": "Nishitani Keiji",
+  "dates": [
+   1900,
+   1990
+  ],
+  "tradition": "kyoto-school",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 72,
+  "id": "watsuji-tetsuro",
+  "name": "Watsuji Tetsurō",
+  "dates": [
+   1889,
+   1960
+  ],
+  "tradition": "kyoto-school",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 73,
+  "id": "al-kindi",
+  "name": "Al-Kindī",
+  "dates": [
+   801,
+   873
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 74,
+  "id": "al-farabi",
+  "name": "Al-Fārābī",
+  "dates": [
+   872,
+   950
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 75,
+  "id": "ibn-sina",
+  "name": "Ibn Sīnā (Avicenna)",
+  "dates": [
+   980,
+   1037
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 76,
+  "id": "al-ghazali",
+  "name": "Al-Ghazālī",
+  "dates": [
+   1058,
+   1111
+  ],
+  "tradition": "kalam",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 77,
+  "id": "ibn-rushd",
+  "name": "Ibn Rushd (Averroes)",
+  "dates": [
+   1126,
+   1198
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 78,
+  "id": "ibn-arabi",
+  "name": "Ibn ʿArabī",
+  "dates": [
+   1165,
+   1240
+  ],
+  "tradition": "sufism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 79,
+  "id": "suhrawardi",
+  "name": "Suhrawardī",
+  "dates": [
+   1154,
+   1191
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 80,
+  "id": "mulla-sadra",
+  "name": "Mullā Ṣadrā",
+  "dates": [
+   1572,
+   1640
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 81,
+  "id": "ibn-khaldun",
+  "name": "Ibn Khaldūn",
+  "dates": [
+   1332,
+   1406
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 82,
+  "id": "ibn-tufayl",
+  "name": "Ibn Ṭufayl",
+  "dates": [
+   1105,
+   1185
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 83,
+  "id": "muhammad-iqbal",
+  "name": "Muhammad Iqbal",
+  "dates": [
+   1877,
+   1938
+  ],
+  "tradition": "islamic-falsafa",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 84,
+  "id": "philo-of-alexandria",
+  "name": "Philo of Alexandria",
+  "dates": [
+   -25,
+   50
+  ],
+  "tradition": "jewish-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 85,
+  "id": "saadia-gaon",
+  "name": "Saadia Gaon",
+  "dates": [
+   882,
+   942
+  ],
+  "tradition": "jewish-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 86,
+  "id": "judah-halevi",
+  "name": "Judah Halevi",
+  "dates": [
+   1075,
+   1141
+  ],
+  "tradition": "jewish-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 87,
+  "id": "maimonides",
+  "name": "Maimonides",
+  "dates": [
+   1138,
+   1204
+  ],
+  "tradition": "jewish-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 88,
+  "id": "spinoza",
+  "name": "Baruch Spinoza",
+  "dates": [
+   1632,
+   1677
+  ],
+  "tradition": "rationalism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 89,
+  "id": "buber",
+  "name": "Martin Buber",
+  "dates": [
+   1878,
+   1965
+  ],
+  "tradition": "jewish-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 90,
+  "id": "levinas",
+  "name": "Emmanuel Levinas",
+  "dates": [
+   1906,
+   1995
+  ],
+  "tradition": "phenomenology",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 91,
+  "id": "ptahhotep",
+  "name": "Ptahhotep",
+  "dates": [
+   -2400,
+   -2350
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 92,
+  "id": "zera-yacob",
+  "name": "Zera Yacob",
+  "dates": [
+   1599,
+   1692
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 93,
+  "id": "nkrumah",
+  "name": "Kwame Nkrumah",
+  "dates": [
+   1909,
+   1972
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 94,
+  "id": "senghor",
+  "name": "Léopold Sédar Senghor",
+  "dates": [
+   1906,
+   2001
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 95,
+  "id": "fanon",
+  "name": "Frantz Fanon",
+  "dates": [
+   1925,
+   1961
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 96,
+  "id": "wiredu",
+  "name": "Kwasi Wiredu",
+  "dates": [
+   1931,
+   2022
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 97,
+  "id": "hountondji",
+  "name": "Paulin Hountondji",
+  "dates": [
+   1942,
+   2024
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 98,
+  "id": "mbembe",
+  "name": "Achille Mbembe",
+  "dates": [
+   1957,
+   2025
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 99,
+  "id": "ramose",
+  "name": "Mogobe Ramose",
+  "dates": [
+   1945,
+   2025
+  ],
+  "tradition": "ubuntu-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 100,
+  "id": "augustine",
+  "name": "Augustine of Hippo",
+  "dates": [
+   354,
+   430
+  ],
+  "tradition": "augustinianism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 101,
+  "id": "boethius",
+  "name": "Boethius",
+  "dates": [
+   477,
+   524
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 102,
+  "id": "anselm",
+  "name": "Anselm of Canterbury",
+  "dates": [
+   1033,
+   1109
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 103,
+  "id": "abelard",
+  "name": "Peter Abelard",
+  "dates": [
+   1079,
+   1142
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 104,
+  "id": "aquinas",
+  "name": "Thomas Aquinas",
+  "dates": [
+   1225,
+   1274
+  ],
+  "tradition": "thomism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 105,
+  "id": "duns-scotus",
+  "name": "John Duns Scotus",
+  "dates": [
+   1266,
+   1308
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 106,
+  "id": "william-of-ockham",
+  "name": "William of Ockham",
+  "dates": [
+   1287,
+   1347
+  ],
+  "tradition": "nominalism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 107,
+  "id": "meister-eckhart",
+  "name": "Meister Eckhart",
+  "dates": [
+   1260,
+   1328
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 108,
+  "id": "nicholas-of-cusa",
+  "name": "Nicholas of Cusa",
+  "dates": [
+   1401,
+   1464
+  ],
+  "tradition": "scholasticism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 109,
+  "id": "descartes",
+  "name": "René Descartes",
+  "dates": [
+   1596,
+   1650
+  ],
+  "tradition": "rationalism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 110,
+  "id": "hobbes",
+  "name": "Thomas Hobbes",
+  "dates": [
+   1588,
+   1679
+  ],
+  "tradition": "empiricism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 111,
+  "id": "locke",
+  "name": "John Locke",
+  "dates": [
+   1632,
+   1704
+  ],
+  "tradition": "empiricism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 112,
+  "id": "berkeley",
+  "name": "George Berkeley",
+  "dates": [
+   1685,
+   1753
+  ],
+  "tradition": "empiricism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 113,
+  "id": "hume",
+  "name": "David Hume",
+  "dates": [
+   1711,
+   1776
+  ],
+  "tradition": "empiricism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 114,
+  "id": "leibniz",
+  "name": "Gottfried Wilhelm Leibniz",
+  "dates": [
+   1646,
+   1716
+  ],
+  "tradition": "rationalism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 115,
+  "id": "kant",
+  "name": "Immanuel Kant",
+  "dates": [
+   1724,
+   1804
+  ],
+  "tradition": "german-idealism",
+  "currentTexts": 3,
+  "status": "pending"
+ },
+ {
+  "n": 116,
+  "id": "fichte",
+  "name": "Johann Gottlieb Fichte",
+  "dates": [
+   1762,
+   1814
+  ],
+  "tradition": "german-idealism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 117,
+  "id": "schelling",
+  "name": "Friedrich Schelling",
+  "dates": [
+   1775,
+   1854
+  ],
+  "tradition": "german-idealism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 118,
+  "id": "hegel",
+  "name": "Georg Wilhelm Friedrich Hegel",
+  "dates": [
+   1770,
+   1831
+  ],
+  "tradition": "german-idealism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 119,
+  "id": "schopenhauer",
+  "name": "Arthur Schopenhauer",
+  "dates": [
+   1788,
+   1860
+  ],
+  "tradition": "german-idealism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 120,
+  "id": "kierkegaard",
+  "name": "Søren Kierkegaard",
+  "dates": [
+   1813,
+   1855
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 121,
+  "id": "nietzsche",
+  "name": "Friedrich Nietzsche",
+  "dates": [
+   1844,
+   1900
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 3,
+  "status": "pending"
+ },
+ {
+  "n": 122,
+  "id": "marx",
+  "name": "Karl Marx",
+  "dates": [
+   1818,
+   1883
+  ],
+  "tradition": "marxism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 123,
+  "id": "mill",
+  "name": "John Stuart Mill",
+  "dates": [
+   1806,
+   1873
+  ],
+  "tradition": "utilitarianism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 124,
+  "id": "husserl",
+  "name": "Edmund Husserl",
+  "dates": [
+   1859,
+   1938
+  ],
+  "tradition": "phenomenology",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 125,
+  "id": "heidegger",
+  "name": "Martin Heidegger",
+  "dates": [
+   1889,
+   1976
+  ],
+  "tradition": "phenomenology",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 126,
+  "id": "sartre",
+  "name": "Jean-Paul Sartre",
+  "dates": [
+   1905,
+   1980
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 127,
+  "id": "beauvoir",
+  "name": "Simone de Beauvoir",
+  "dates": [
+   1908,
+   1986
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 128,
+  "id": "camus",
+  "name": "Albert Camus",
+  "dates": [
+   1913,
+   1960
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 129,
+  "id": "merleau-ponty",
+  "name": "Maurice Merleau-Ponty",
+  "dates": [
+   1908,
+   1961
+  ],
+  "tradition": "phenomenology",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 130,
+  "id": "gadamer",
+  "name": "Hans-Georg Gadamer",
+  "dates": [
+   1900,
+   2002
+  ],
+  "tradition": "hermeneutics",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 131,
+  "id": "arendt",
+  "name": "Hannah Arendt",
+  "dates": [
+   1906,
+   1975
+  ],
+  "tradition": "existentialism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 132,
+  "id": "wittgenstein",
+  "name": "Ludwig Wittgenstein",
+  "dates": [
+   1889,
+   1951
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 133,
+  "id": "russell",
+  "name": "Bertrand Russell",
+  "dates": [
+   1872,
+   1970
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 134,
+  "id": "frege",
+  "name": "Gottlob Frege",
+  "dates": [
+   1848,
+   1925
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 135,
+  "id": "carnap",
+  "name": "Rudolf Carnap",
+  "dates": [
+   1891,
+   1970
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 136,
+  "id": "quine",
+  "name": "Willard Van Orman Quine",
+  "dates": [
+   1908,
+   2000
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 137,
+  "id": "popper",
+  "name": "Karl Popper",
+  "dates": [
+   1902,
+   1994
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 138,
+  "id": "kuhn",
+  "name": "Thomas Kuhn",
+  "dates": [
+   1922,
+   1996
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 139,
+  "id": "foucault",
+  "name": "Michel Foucault",
+  "dates": [
+   1926,
+   1984
+  ],
+  "tradition": "post-structuralism",
+  "currentTexts": 2,
+  "status": "pending"
+ },
+ {
+  "n": 140,
+  "id": "derrida",
+  "name": "Jacques Derrida",
+  "dates": [
+   1930,
+   2004
+  ],
+  "tradition": "post-structuralism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 141,
+  "id": "deleuze",
+  "name": "Gilles Deleuze",
+  "dates": [
+   1925,
+   1995
+  ],
+  "tradition": "post-structuralism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 142,
+  "id": "habermas",
+  "name": "Jürgen Habermas",
+  "dates": [
+   1929,
+   2025
+  ],
+  "tradition": "critical-theory",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 143,
+  "id": "adorno",
+  "name": "Theodor W. Adorno",
+  "dates": [
+   1903,
+   1969
+  ],
+  "tradition": "critical-theory",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 144,
+  "id": "benjamin",
+  "name": "Walter Benjamin",
+  "dates": [
+   1892,
+   1940
+  ],
+  "tradition": "critical-theory",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 145,
+  "id": "marcuse",
+  "name": "Herbert Marcuse",
+  "dates": [
+   1898,
+   1979
+  ],
+  "tradition": "critical-theory",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 146,
+  "id": "gramsci",
+  "name": "Antonio Gramsci",
+  "dates": [
+   1891,
+   1937
+  ],
+  "tradition": "marxism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 147,
+  "id": "rawls",
+  "name": "John Rawls",
+  "dates": [
+   1921,
+   2002
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 148,
+  "id": "kripke",
+  "name": "Saul Kripke",
+  "dates": [
+   1940,
+   2022
+  ],
+  "tradition": "analytic-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 149,
+  "id": "emerson",
+  "name": "Ralph Waldo Emerson",
+  "dates": [
+   1803,
+   1882
+  ],
+  "tradition": "transcendentalism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 150,
+  "id": "peirce",
+  "name": "Charles Sanders Peirce",
+  "dates": [
+   1839,
+   1914
+  ],
+  "tradition": "pragmatism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 151,
+  "id": "james",
+  "name": "William James",
+  "dates": [
+   1842,
+   1910
+  ],
+  "tradition": "pragmatism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 152,
+  "id": "dewey",
+  "name": "John Dewey",
+  "dates": [
+   1859,
+   1952
+  ],
+  "tradition": "pragmatism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 153,
+  "id": "du-bois",
+  "name": "W.E.B. Du Bois",
+  "dates": [
+   1868,
+   1963
+  ],
+  "tradition": "africana-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 154,
+  "id": "whitehead",
+  "name": "Alfred North Whitehead",
+  "dates": [
+   1861,
+   1947
+  ],
+  "tradition": "process-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 155,
+  "id": "rorty",
+  "name": "Richard Rorty",
+  "dates": [
+   1931,
+   2007
+  ],
+  "tradition": "pragmatism",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 156,
+  "id": "cornel-west",
+  "name": "Cornel West",
+  "dates": [
+   1953,
+   2025
+  ],
+  "tradition": "pragmatism",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 157,
+  "id": "wollstonecraft",
+  "name": "Mary Wollstonecraft",
+  "dates": [
+   1759,
+   1797
+  ],
+  "tradition": "feminist-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 158,
+  "id": "butler",
+  "name": "Judith Butler",
+  "dates": [
+   1956,
+   2025
+  ],
+  "tradition": "feminist-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 159,
+  "id": "hooks",
+  "name": "bell hooks",
+  "dates": [
+   1952,
+   2021
+  ],
+  "tradition": "feminist-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 160,
+  "id": "spivak",
+  "name": "Gayatri Chakravorty Spivak",
+  "dates": [
+   1942,
+   2025
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 161,
+  "id": "irigaray",
+  "name": "Luce Irigaray",
+  "dates": [
+   1930,
+   2025
+  ],
+  "tradition": "feminist-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 162,
+  "id": "las-casas",
+  "name": "Bartolomé de las Casas",
+  "dates": [
+   1484,
+   1566
+  ],
+  "tradition": "latin-american-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 163,
+  "id": "sor-juana",
+  "name": "Sor Juana Inés de la Cruz",
+  "dates": [
+   1648,
+   1695
+  ],
+  "tradition": "latin-american-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 164,
+  "id": "dussel",
+  "name": "Enrique Dussel",
+  "dates": [
+   1934,
+   2025
+  ],
+  "tradition": "latin-american-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 165,
+  "id": "freire",
+  "name": "Paulo Freire",
+  "dates": [
+   1921,
+   1997
+  ],
+  "tradition": "latin-american-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 166,
+  "id": "said",
+  "name": "Edward Said",
+  "dates": [
+   1935,
+   2003
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ },
+ {
+  "n": 167,
+  "id": "bhabha",
+  "name": "Homi K. Bhabha",
+  "dates": [
+   1949,
+   2025
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 168,
+  "id": "mignolo",
+  "name": "Walter Mignolo",
+  "dates": [
+   1941,
+   2025
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 169,
+  "id": "quijano",
+  "name": "Aníbal Quijano",
+  "dates": [
+   1928,
+   2018
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 0,
+  "status": "pending"
+ },
+ {
+  "n": 170,
+  "id": "cesaire",
+  "name": "Aimé Césaire",
+  "dates": [
+   1913,
+   2008
+  ],
+  "tradition": "postcolonial-philosophy",
+  "currentTexts": 1,
+  "status": "pending"
+ }
+]

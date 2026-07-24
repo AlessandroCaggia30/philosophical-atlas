@@ -1,0 +1,126 @@
+{
+  "authorId": "empedocles",
+  "authorName": "Empedocles of Acragas",
+  "corpusNote": "Empedocles is the best-preserved Presocratic after Heraclitus and Parmenides: roughly 550 hexameter lines survive across some 150 fragments. The governing scholarly problem is whether these come from one poem or two. The ancient tradition names two works — a physical poem On Nature and a religious poem Purifications — but the 1994 publication of the Strasbourg Papyrus, and continuing finds (thirty further verses identified on a Cairo papyrus in 2026), have pushed much recent scholarship toward the view that there was a single poem, or that the two are far more interwoven than the old physics/religion split allowed.",
+  "referenceSystems": [
+    { "name": "Diels–Kranz", "abbrev": "DK", "note": "Empedocles = DK 31. A = testimonia; B = verbatim fragments B1–B153. DK assigns fragments to On Nature or to Purifications on thematic grounds now widely questioned." },
+    { "name": "Inwood", "abbrev": "Inw", "note": "Inwood, The Poem of Empedocles (2nd ed. 2001) — reorders the fragments into a single continuous poem, with its own numbering; standard for the one-poem reading." },
+    { "name": "Wright", "abbrev": "Wr", "note": "M.R. Wright, Empedocles: The Extant Fragments (1981) — the standard critical edition, full commentary." },
+    { "name": "Laks–Most", "abbrev": "LM", "note": "Early Greek Philosophy, Loeb (2016), vol. V, prints and renumbers all fragments incl. the Strasbourg material." }
+  ],
+  "works": [
+    {
+      "id": "empedocles-on-nature",
+      "title": "On Nature",
+      "originalTitle": "Περὶ φύσεως",
+      "transliteration": "Peri physeōs",
+      "status": "fragmentary",
+      "genre": "didactic hexameter poem",
+      "language": "Ancient Greek (epic dialect, dactylic hexameter)",
+      "date": { "start": -450, "end": -435, "approximate": true, "note": "Empedocles fl. c. 444 BCE (Apollodorus); the poems belong to the mid-5th century." },
+      "extent": "Substantial. On the traditional two-poem division, On Nature is the larger, with the majority of the ~550 surviving lines. The Strasbourg Papyrus (P.Strasb. gr. Inv. 1665–1666, published by Martin & Primavesi 1999) added over 70 lines, of which its fragment 'a' continues the previously known B17 to make a continuous 69-line stretch — the longest run of Empedocles we have. A Cairo papyrus yielded thirty further verses identified in 2026.",
+      "citations": ["DK 31 B1–B111 (traditionally)", "Simplicius, In Physica (the bulk of the long fragments)", "Aristotle, Metaphysics, De Generatione et Corruptione, Physics", "P.Strasb. gr. Inv. 1665–1666"],
+      "transmission": "As with the other Presocratics, Simplicius' Aristotle commentaries preserve most of the long connected passages, quoting because he had a copy and valued the poetry. Aristotle himself quotes extensively and is the earliest witness — he admired Empedocles as the inventor of rhetoric and a Homeric poet even while criticising his physics. The Strasbourg papyrus, copied in the 1st century CE and reused as funerary cartonnage, is the only Presocratic text to survive on its own ancient papyrus rather than solely through quotation.",
+      "authenticity": "Genuine. The disputes are (1) the one-poem vs two-poem question, now leaning toward greater unity, and (2) the assignment of individual DK fragments between the works, which the papyrus finds have partly redrawn — B139, a 'purification' fragment, turned up among the Strasbourg physical material, suggesting the themes were not segregated.",
+      "summary": "The four 'roots' (rhizōmata) — earth, water, air (aithēr), fire — ungenerated and imperishable, mixed and separated by two cosmic forces, Love (Philotēs) which unites and Strife (Neikos) which divides. The cosmic cycle: under Love all becomes one homogeneous Sphere (Sphairos); under Strife the roots separate; the world we know is a phase of mixture between the extremes. No true birth or death, only mingling and interchange of what persists (B8, B17). A theory of perception by effluences and pores; the famous zoogony of stray limbs — 'heads without necks, arms wandering bare' — combining first at random, the viable forms surviving (B57–B62), read since antiquity as anticipating natural selection.",
+      "editions": [
+        "Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 31",
+        "Wright, Empedocles: The Extant Fragments (1981)",
+        "Inwood, The Poem of Empedocles, 2nd ed. (2001)",
+        "Martin & Primavesi, L'Empédocle de Strasbourg (1999) — the papyrus edition",
+        "Laks & Most, Early Greek Philosophy, Loeb (2016), vol. V"
+      ],
+      "translations": [
+        "Inwood (2001) — facing Greek, single-poem arrangement",
+        "Wright (1981)",
+        "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed. (1983), ch. 10",
+        "Burnet, Early Greek Philosophy (1892/1920) — public domain",
+        "Leonard, The Fragments of Empedocles (1908) — verse translation, public domain"
+      ],
+      "publicDomain": true,
+      "onlineText": "https://iep.utm.edu/empedocles/",
+      "notes": "Teaching point: the Strasbourg papyrus is the single best classroom illustration that the Presocratic corpus is still growing — a 1994/1999 discovery, and again 2026, materially changed the reconstruction. What 'the fragments of Empedocles' are is not fixed."
+    },
+    {
+      "id": "empedocles-purifications",
+      "title": "Purifications",
+      "originalTitle": "Καθαρμοί",
+      "transliteration": "Katharmoi",
+      "status": "fragmentary",
+      "genre": "didactic / religious hexameter poem",
+      "language": "Ancient Greek (dactylic hexameter)",
+      "date": { "start": -450, "end": -435, "approximate": true },
+      "extent": "On the two-poem view, the smaller work, surviving in perhaps 100–150 lines including the well-known proem fragments. On the one-poem view, these are the religious portions of a single poem and 'Purifications' is a section-title or alternative name.",
+      "citations": ["DK 31 B112–B153 (traditionally)", "Diogenes Laertius VIII.54, 62, 77", "Clement of Alexandria, Stromateis", "Hippolytus, Refutation"],
+      "transmission": "Preserved mainly through Diogenes Laertius, Clement, Hippolytus and Plutarch — the moralising and doxographic quotation stream rather than the Aristotelian-commentary one. The famous opening (B112), addressing the citizens of Acragas, is quoted by Diogenes Laertius VIII.62.",
+      "authenticity": "Genuine, but its independence as a separate poem is exactly what is now contested. The very existence of the Katharmoi as a distinct work rests on the tradition (Diogenes gives both titles) and on thematic sorting; the Strasbourg overlap undercuts the sort.",
+      "summary": "A doctrine of the daimon (the fallen divine spirit), reincarnation and purification: Empedocles announces himself 'an immortal god, no longer mortal' (B112); the daimones who stain their hands with blood or swear falsely wander thirty thousand seasons through mortal forms, exiled from the blessed (B115); the injunction against bloodshed and meat-eating, since the slaughtered animal may house a transmigrated soul; Empedocles' own past lives — 'I have already been a boy and a girl, a bush, a bird, and a mute fish in the sea' (B117). Ends toward a return to divine status.",
+      "editions": [
+        "Diels–Kranz, ch. 31 B112–B153",
+        "Wright, Empedocles: The Extant Fragments (1981)",
+        "Inwood, The Poem of Empedocles, 2nd ed. (2001)",
+        "Laks & Most, Loeb (2016), vol. V"
+      ],
+      "translations": [
+        "Inwood (2001)",
+        "Wright (1981)",
+        "Kirk, Raven & Schofield, ch. 10",
+        "Leonard (1908) — public domain"
+      ],
+      "publicDomain": true,
+      "onlineText": "https://iep.utm.edu/empedocles/",
+      "notes": "The one-vs-two-poems question is the central Empedoclean controversy and should be taught as open. Osborne (1987) argued for one poem before the papyrus; Trépanier (2004) and much subsequent work follow; a strong minority (e.g. Primavesi in some respects) still defends two."
+    },
+    {
+      "id": "empedocles-medical-political-lost",
+      "title": "Lost and doubtfully attributed works (medical poem, Persica, tragedies, Proem to Apollo)",
+      "status": "lost",
+      "genre": "various — didactic verse, drama",
+      "language": "Ancient Greek",
+      "date": { "start": -460, "end": -435, "approximate": true },
+      "extent": "Lost. Titles and disputed attributions only.",
+      "citations": ["DL VIII.57–58, 77", "Suda, s.v. Ἐμπεδοκλῆς", "Aristotle (on the tragedies, via DL)"],
+      "transmission": "Diogenes Laertius VIII.57–58 reports, on various authorities, a medical work (iatrikos logos) of some 600 lines, a Proem to Apollo, a poem on Xerxes' invasion (Persica), and tragedies — though he notes Aristotle attributed the tragedies and the political speeches to a different Empedocles (the philosopher's grandson).",
+      "authenticity": "Mostly spurious or misattributed. Aristotle already sorted the tragedies away to a homonymous relative. The medical poem may reflect Empedocles' genuine reputation as a physician-founder of the Sicilian medical tradition, but no text survives to assess.",
+      "summary": "Nothing of the content survives beyond the bare notices.",
+      "editions": ["DK 31 A1 (= DL VIII.51–77)"],
+      "translations": ["Hicks, Diogenes Laertius, Loeb (1925) — public domain"],
+      "publicDomain": true,
+      "notes": "Classic case of a famous name attracting works by relatives and imitators; Aristotle's disambiguation is itself the evidence."
+    },
+    {
+      "id": "empedocles-testimonia",
+      "title": "Testimonia (DK 31 A)",
+      "status": "non-authorial",
+      "genre": "testimonia collection",
+      "language": "Ancient Greek, some Latin",
+      "date": { "start": -350, "end": 600, "approximate": true },
+      "extent": "About 55 testimonia in DK 31 A.",
+      "citations": ["DK 31 A", "Aristotle, Metaphysics 984a8–11, 985a21–b4", "Aristotle, De Generatione et Corruptione", "DL VIII.51–77", "Simplicius, In Physica, In De Caelo"],
+      "transmission": "Aristotle and Theophrastus (whose De Sensibus preserves Empedocles' theory of perception), then the doxographers and Diogenes Laertius VIII, source of the biography — the bronze sandals, the leap into Etna, the healing miracles, the claim to have raised the dead.",
+      "authenticity": "Not by Empedocles; the standard base for his physics and biography.",
+      "summary": "Aristotle's placement of Empedocles among the pluralists and his crediting him with the four material elements and the two efficient causes; Theophrastus on effluences and pores; the legendary Life (the death in the volcano is Diogenes' most famous anecdote, reported as one of several competing accounts).",
+      "editions": ["Diels–Kranz, ch. 31 A", "Laks & Most, Loeb (2016), vol. V"],
+      "translations": ["Kirk, Raven & Schofield, ch. 10", "Laks & Most, Loeb (2016)"],
+      "publicDomain": true,
+      "notes": ""
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Tragedies and political speeches",
+      "reason": "Aristotle (in DL VIII.57–58) assigned these to a different Empedocles, the philosopher's grandson of the same name.",
+      "actualAuthor": "Empedocles the Younger (grandson)"
+    }
+  ],
+  "sources": [
+    "Stanford Encyclopedia of Philosophy, 'Empedocles' (one-poem/two-poem question, Strasbourg papyrus)",
+    "Internet Encyclopedia of Philosophy, 'Empedocles'",
+    "Martin & Primavesi, L'Empédocle de Strasbourg (1999)",
+    "Inwood, The Poem of Empedocles, 2nd ed. (2001)",
+    "Diels–Kranz, Die Fragmente der Vorsokratiker, ch. 31",
+    "Diogenes Laertius, Lives VIII.51–77"
+  ],
+  "compiled": "2026-07-24",
+  "confidence": "high"
+}

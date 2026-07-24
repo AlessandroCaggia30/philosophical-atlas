@@ -1,0 +1,120 @@
+{
+  "authorId": "socrates",
+  "authorName": "Socrates of Athens",
+  "corpusNote": "Socrates wrote nothing philosophical. He published no doctrine, founded no school with a text, and — on Plato's testimony in the Phaedrus — actively distrusted writing as a substitute for living dialogue. Everything we have of him is other people's Socrates: chiefly Plato's dialogues, Xenophon's Socratic works, one contemporary comedy (Aristophanes' Clouds), and Aristotle's reports. Because these portraits diverge, the reconstruction of the historical Socrates from them is a named and unsolved problem — 'the Socratic problem' — and this file catalogues the sources, not works of Socrates.",
+  "referenceSystems": [
+    { "name": "Socratic problem", "abbrev": "SP", "note": "The scholarly problem of recovering the historical Socrates from mutually inconsistent portraits; there is no critical edition of Socrates because there is no text of Socrates." },
+    { "name": "SSR (Giannantoni)", "abbrev": "SSR", "note": "Gabriele Giannantoni, Socratis et Socraticorum Reliquiae (1990) — the standard modern collection of all testimonia on Socrates and the Socratic schools, in 4 vols." }
+  ],
+  "works": [
+    {
+      "id": "socrates-prison-verses",
+      "title": "Versifications of Aesop and a Hymn to Apollo (attributed)",
+      "originalTitle": "—",
+      "status": "lost",
+      "genre": "verse",
+      "language": "Ancient Greek",
+      "date": { "start": -399, "end": -399, "approximate": false, "note": "Composed, if genuine, in the weeks between Socrates' trial and execution, 399 BCE." },
+      "extent": "Lost; possibly never existed. The only writing ever attributed to Socrates, and only by report.",
+      "citations": ["Plato, Phaedo 60d–61b", "DL II.42"],
+      "transmission": "Plato has Socrates, in prison awaiting death, tell Cebes that he has been putting Aesop's fables into verse and composing a hymn (prooimion) to Apollo — in response to a recurring dream telling him to 'make music', which he had all his life taken to mean philosophy. Diogenes Laertius II.42 repeats it and even quotes two lines of the alleged Apollo hymn.",
+      "authenticity": "Doubtful, and beside the point. Even if Socrates did versify Aesop in his last days, this is not philosophical authorship; Plato presents it precisely as Socrates settling a debt to the dream, not as writing philosophy. The two lines in Diogenes are probably later invention.",
+      "summary": "Not doctrine. A literary-biographical detail that dramatises Socrates' lifelong refusal to write philosophy: asked why he now makes verse, he explains he is obeying a dream and hedging a bet about what 'music' means, not recording thought.",
+      "editions": ["Plato, Phaedo, ed. Burnet (OCT); Giannantoni, SSR"],
+      "translations": ["Any translation of Plato's Phaedo (Grube, Gallop); Hicks, Diogenes Laertius, Loeb (1925)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0170%3Atext%3DPhaedo",
+      "notes": "The Phaedrus (274b–277a) critique of writing is Socrates' — via Plato — most important statement on why he did not write: the written word cannot answer questions, defend itself, or choose its readers."
+    },
+    {
+      "id": "socrates-plato-dialogues",
+      "title": "Source: The dialogues of Plato",
+      "status": "non-authorial",
+      "genre": "philosophical dialogue (source portrait)",
+      "language": "Ancient Greek",
+      "date": { "start": -399, "end": -347, "approximate": true },
+      "extent": "The largest and most influential portrait. Socrates is the principal speaker in nearly all of Plato's ~35 dialogues.",
+      "citations": ["Apology", "Crito", "Euthyphro", "Laches", "Charmides", "Protagoras", "Gorgias", "Meno", "Phaedo", "Symposium", "Republic", "Theaetetus", "Phaedrus"],
+      "transmission": "Plato's own corpus (see the Plato file). The interpretive convention — never secure — distinguishes the 'early'/Socratic dialogues (Apology, Crito, Euthyphro, Laches, etc.), where a Socrates who professes ignorance examines others and reaches no doctrine, from the 'middle' dialogues (Phaedo, Republic, Symposium), where 'Socrates' expounds the Theory of Forms and the tripartite soul — positive doctrines most scholars assign to Plato, not the historical Socrates.",
+      "authenticity": "The central witness and the central problem. How much of Plato's Socrates is Socrates is unrecoverable; the 'developmental' reading (Vlastos) treats the early dialogues as broadly historical, but this is a hypothesis, not a finding.",
+      "summary": "The Socrates of philosophical tradition: the elenchus (cross-examination exposing contradiction in the interlocutor's beliefs); professed ignorance ('I know that I know nothing'); the identification of virtue with knowledge and the claim that no one does wrong willingly; the care of the soul as life's task; the unexamined life not worth living (Apology 38a); the daimonion, the divine sign that forbade but never commanded.",
+      "editions": ["Burnet, Platonis Opera (OCT); see plato.json"],
+      "translations": ["Cooper (ed.), Plato: Complete Works (1997)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/collection?collection=Perseus%3Acorpus%3Aperseus%2CGreek%20Texts",
+      "notes": "The Apology is the source closest to a 'direct' Socrates — Plato's version of the defence speech, before an audience who had heard the real one, which constrains how far he could invent."
+    },
+    {
+      "id": "socrates-xenophon",
+      "title": "Source: The Socratic works of Xenophon",
+      "status": "non-authorial",
+      "genre": "memoir, dialogue, apology (source portrait)",
+      "language": "Ancient Greek",
+      "date": { "start": -385, "end": -355, "approximate": true },
+      "extent": "Four works: Memorabilia (Recollections of Socrates, 4 books), Apology of Socrates, Symposium, and Oeconomicus.",
+      "citations": ["Xenophon, Memorabilia", "Xenophon, Apology", "Xenophon, Symposium", "Xenophon, Oeconomicus"],
+      "transmission": "Xenophon's own extant corpus, transmitted independently of Plato's. He knew Socrates personally but wrote the Socratic works after decades as a soldier and country gentleman, partly to defend Socrates' memory against the charges.",
+      "authenticity": "An independent portrait, and a corrective — but a different Socrates: more conventionally pious, practical, and moralising, less paradoxical and less metaphysical than Plato's. Whether Xenophon's plainer Socrates is more historical (he was less philosophically ambitious, so had less motive to invent doctrine) or less (he was a lesser philosopher who may have missed the point) is itself disputed.",
+      "summary": "A Socrates who gives prudential advice on managing an estate, choosing friends, and serving the city; who argues for the gods' providence from design; whose usefulness to Athens the Memorabilia labours to establish against the impiety and corruption charges.",
+      "editions": ["Marchant, Xenophontis Opera (OCT); Giannantoni, SSR"],
+      "translations": ["Xenophon, Memorabilia, trans. Bonnette (1994); Loeb Classical Library editions (public domain older versions)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0208",
+      "notes": "The Plato–Xenophon divergence is the core of the Socratic problem: two eyewitnesses, two incompatible Socrateses. Teach them side by side."
+    },
+    {
+      "id": "socrates-aristophanes-clouds",
+      "title": "Source: Aristophanes, Clouds",
+      "originalTitle": "Νεφέλαι",
+      "transliteration": "Nephelai",
+      "status": "non-authorial",
+      "genre": "comedy (source portrait)",
+      "language": "Ancient Greek",
+      "date": { "start": -423, "end": -418, "approximate": true, "note": "First produced 423 BCE; the surviving text is a partial revision from c. 419–416." },
+      "extent": "One complete comedy — the only contemporary portrait written while Socrates was alive and in his forties.",
+      "citations": ["Aristophanes, Clouds"],
+      "transmission": "Aristophanes' extant play. Uniquely, it depicts Socrates during his lifetime and before a mass Athenian audience.",
+      "authenticity": "A caricature, not a report — but a historically crucial one. Plato's Apology (18a–d, 19c) has Socrates name the Clouds' portrait as the origin of the old prejudice against him, which means the caricature mattered enough to answer at his trial 24 years later.",
+      "summary": "Socrates as sophist and natural philosopher: suspended in a basket to study the heavens, running a 'Thinkery' (phrontistērion) that teaches how to make the weaker argument the stronger, denying the traditional gods in favour of the Clouds and cosmic Vortex. Almost the opposite of Plato's Socrates, who disclaims both natural philosophy and paid teaching — the tension is evidence either that the young Socrates changed or that comedy fused him with the sophists.",
+      "editions": ["Dover, Aristophanes: Clouds (1968) — standard commentary; Wilson, Aristophanis Fabulae (OCT)"],
+      "translations": ["Aristophanes, Clouds, trans. Henderson, Loeb (1998); many public-domain verse translations"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0028",
+      "notes": "The one source composed during Socrates' life. That it is a hostile joke is the point: it shows what an ordinary Athenian saw."
+    },
+    {
+      "id": "socrates-aristotle-and-others",
+      "title": "Sources: Aristotle and the minor Socratics",
+      "status": "non-authorial",
+      "genre": "testimonia (source portrait)",
+      "language": "Ancient Greek",
+      "date": { "start": -390, "end": -320, "approximate": true },
+      "extent": "Aristotle's scattered reports, plus the lost Socratic dialogues of Aeschines of Sphettus, Antisthenes, Aristippus, Phaedo, Euclides of Megara and others (fragments in Giannantoni's SSR).",
+      "citations": ["Aristotle, Metaphysics 987b1–4, 1078b17–32; Nicomachean Ethics 1145b23–27", "SSR (fragments of Aeschines, Antisthenes, Aristippus, Phaedo, Euclides)"],
+      "transmission": "Aristotle, who never met Socrates but had Plato's oral tradition, is our one 'analytic' witness: he credits Socrates specifically and only with two things — inductive arguments and universal definition (Metaphysics 1078b) — and pointedly says Socrates did not separate the universals, 'but they [the Platonists] gave them separate existence'. This is the key evidence that the Theory of Forms is Plato's, not Socrates'. The minor Socratics founded rival schools (Cynic, Cyrenaic, Megarian) each claiming the true Socrates.",
+      "authenticity": "Aristotle's testimony is the most valuable single tool for prising the historical Socrates from Plato, precisely because Aristotle distinguishes them. The minor Socratics show how many incompatible Socrateses his followers could sincerely produce.",
+      "summary": "Aristotle's Socrates: concerned with ethics not nature, seeking definitions of the virtues by induction, intellectualist about virtue (identifying it with knowledge, so denying akrasia — weakness of will), but not a metaphysician of Forms. The minor Socratics' Socrates: variously the ascetic self-sufficient sage (Antisthenes → Cynics), the pleasure-calculating hedonist (Aristippus → Cyrenaics), and the dialectician of the One (Euclides → Megarians).",
+      "editions": ["Giannantoni, Socratis et Socraticorum Reliquiae (1990)", "Ross, Aristotelis... (OCT) for the Aristotle passages"],
+      "translations": ["Barnes (ed.), The Complete Works of Aristotle (1984)"],
+      "publicDomain": true,
+      "notes": "Aristotle, Metaphysics 1078b17–32 is the single most important sentence for the Socratic problem: it tells you which half of Plato's Socrates is Socrates."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Any philosophical treatise or dialogue",
+      "reason": "Socrates composed no philosophical writing. Titles occasionally attached to his name in later or popular sources are spurious; the dialogues 'of Socrates' are by Plato, Xenophon, and the other Socratics, with Socrates as character.",
+      "actualAuthor": "Plato, Xenophon, Aeschines, et al."
+    }
+  ],
+  "sources": [
+    "Plato, Apology, Phaedo, Phaedrus",
+    "Xenophon, Memorabilia, Apology, Symposium, Oeconomicus",
+    "Aristophanes, Clouds",
+    "Aristotle, Metaphysics M.4, Nicomachean Ethics VII",
+    "Giannantoni, Socratis et Socraticorum Reliquiae (1990)",
+    "Vlastos, Socrates: Ironist and Moral Philosopher (1991)"
+  ],
+  "compiled": "2026-07-24",
+  "confidence": "high"
+}

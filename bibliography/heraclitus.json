@@ -1,0 +1,120 @@
+{
+  "authorId": "heraclitus",
+  "authorName": "Heraclitus of Ephesus",
+  "corpusNote": "Heraclitus wrote one book. It does not survive, but it is quoted more often, and more extensively, than any other Presocratic work — some 126 numbered fragments in Diels–Kranz, many of them complete aphorisms rather than scraps. The central editorial problem is not scarcity but order: the fragments reach us scattered across three dozen later authors with no indication of their original sequence, so every modern edition is also an argument about the book's architecture.",
+  "referenceSystems": [
+    { "name": "Diels–Kranz", "abbrev": "DK", "note": "Heraclitus = DK 22. A = testimonia; B = verbatim fragments, numbered B1–B126 with subdivisions (B49a, B126a, B126b); C = ancient imitations. DK orders the B-fragments alphabetically by the name of the quoting source, which is why DK order is not thematic and should never be read as Heraclitus' own." },
+    { "name": "Marcovich", "abbrev": "M", "note": "Marcovich, Heraclitus: Greek Text with a Short Commentary (1967) — the standard critical edition, with its own thematic renumbering. Citations usually appear as 'DK 22 B44 = fr. 103 Marcovich'." },
+    { "name": "Kahn", "abbrev": "K", "note": "Kahn, The Art and Thought of Heraclitus (1979) — 125 fragments in Roman numerals (I–CXXV), reordered to reconstruct a literary design." },
+    { "name": "Laks–Most", "abbrev": "LM", "note": "Early Greek Philosophy, Loeb (2016), vol. III — current standard reference numbering." }
+  ],
+  "works": [
+    {
+      "id": "fragments-heraclitus",
+      "title": "On Nature (the fragments)",
+      "originalTitle": "Περὶ φύσεως",
+      "transliteration": "Peri physeōs",
+      "status": "fragmentary",
+      "genre": "prose treatise in aphorisms",
+      "language": "Ancient Greek (Ionic prose)",
+      "date": { "start": -505, "end": -495, "approximate": true, "note": "Apollodorus placed Heraclitus' floruit at the 69th Olympiad (504/501 BCE); the book is conventionally dated to around then." },
+      "extent": "The original book is lost. Roughly 126 verbatim fragments survive (DK 22 B1–B126, with subdivisions), amounting to perhaps 10,000 words — far more than any other Presocratic. Individual fragments range from a single word to several sentences. An unknown proportion of the whole: estimates of what survives run from a fifth to a twentieth.",
+      "citations": ["DK 22 B1–B126", "DL IX.1–17", "Sextus Empiricus, Adv. Math. VII.132 (B1)", "Hippolytus, Refutation of All Heresies IX.9–10", "Clement of Alexandria, Stromateis (numerous)", "Plutarch, Moralia (numerous)", "Stobaeus, Anthology (numerous)", "Derveni Papyrus col. IV (B3 + B94)"],
+      "transmission": "No single manuscript; the book is reassembled from quotation. The major witnesses: Hippolytus, Refutation IX.9–10 (a block of some 17 fragments quoted in sequence, the closest thing to a continuous stretch of the book); Clement of Alexandria; Plutarch; Sextus Empiricus, who preserves the opening sentence B1; Diogenes Laertius IX; Stobaeus; Marcus Aurelius. The Derveni Papyrus (c. 340 BCE, found 1962) preserves a quotation of B3 + B94 on the sun and its measures — our physically oldest witness by some seven centuries, and it shows the two fragments joined, which DK had printed apart.",
+      "authenticity": "The core is secure. Disputes are local: whether individual fragments are verbatim or paraphrase, where quotation ends and the quoting author's framing begins, and whether the later fragments in DK's sequence (drawn from Christian and gnomological sources) are authentic at all. DK's own C-section collects known ancient imitations, which is a warning that the boundary is porous.",
+      "summary": "Fire as the ordering principle; the logos that holds always but which people fail to comprehend even after hearing it; the unity of opposites — 'the road up and the road down are one and the same' (B60); strife as justice and the father of all (B53, B80); measured change — 'this cosmos, the same for all, no god or man made, but it always was, is, and will be, ever-living fire kindled in measures and quenched in measures' (B30); the soul and its depths (B45); 'you cannot step twice into the same river' in its several transmitted forms (B12, B49a, B91); 'character is fate' (B119).",
+      "editions": [
+        "Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 22",
+        "Marcovich, Heraclitus: Greek Text with a Short Commentary (1967; 2nd ed. 2001) — standard critical edition",
+        "Kahn, The Art and Thought of Heraclitus (1979) — text, translation, commentary",
+        "Robinson, Heraclitus: Fragments (1987) — Phoenix Presocratics, Greek and English",
+        "Laks & Most, Early Greek Philosophy, Loeb (2016), vol. III"
+      ],
+      "translations": [
+        "Kahn (1979) — the most influential English rendering",
+        "Robinson (1987) — facing Greek, literal",
+        "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed. (1983), ch. 6",
+        "Freeman, Ancilla to the Pre-Socratic Philosophers (1948) — complete DK B-fragments in English, public domain in most jurisdictions",
+        "Burnet, Early Greek Philosophy (1892/1920) — public domain"
+      ],
+      "publicDomain": true,
+      "onlineText": "https://history.hanover.edu/texts/presoc/heraclitus.html",
+      "notes": "Teaching point: hand students B1 in Sextus' framing and B1 in DK's, and ask where Heraclitus stops and Sextus starts. The obscurity that earned him the epithet ὁ Σκοτεινός ('the Obscure') is partly authorial and partly an artefact of transmission — we read a book of aphorisms with its connective tissue removed."
+    },
+    {
+      "id": "heraclitus-book-arrangement",
+      "title": "The book's three discourses (structure)",
+      "status": "lost",
+      "genre": "structural testimonium",
+      "language": "Ancient Greek",
+      "date": { "start": -505, "end": -495, "approximate": true },
+      "extent": "The arrangement itself, attested but not preserved.",
+      "citations": ["DL IX.5, citing Diodotus", "DL IX.6 (deposit in the Artemisium)"],
+      "transmission": "Diogenes Laertius IX.5: the book was 'a continuous treatise On Nature, but divided into three discourses (logoi), one on the universe, another on politics, and a third on theology.' IX.6: Heraclitus deposited it as a dedication in the temple of Artemis at Ephesus, and wrote it deliberately obscurely so that only the capable should approach it.",
+      "authenticity": "Attributed. The three-part division is reported on the authority of Diodotus, a Hellenistic commentator, and may reflect a later editorial arrangement rather than Heraclitus'. Many scholars doubt the book had formal divisions at all; some doubt it was a continuous treatise rather than a collection of sayings.",
+      "summary": "Not a separate work — listed here because the question of whether the book had an order, and what it was, governs every modern edition. Kahn's reconstruction, Marcovich's thematic grouping and DK's source-alphabetical ordering are three incompatible answers to it.",
+      "editions": ["DK 22 A1 (= DL IX.1–17)"],
+      "translations": ["Hicks, Diogenes Laertius, Loeb (1925) — public domain"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D9%3Achapter%3D1",
+      "notes": "The Artemisium deposit story is the earliest account of a philosophical book being published by dedication rather than circulation."
+    },
+    {
+      "id": "heraclitus-letters",
+      "title": "Letters of Heraclitus",
+      "originalTitle": "Ἐπιστολαί",
+      "transliteration": "Epistolai",
+      "status": "spurious",
+      "genre": "epistolary fiction",
+      "language": "Ancient Greek",
+      "date": { "start": 100, "end": 200, "approximate": true, "note": "Composed in the Roman imperial period, probably 1st–2nd c. CE." },
+      "extent": "Nine letters survive, purportedly between Heraclitus and Darius I of Persia and others (notably Hermodorus and Amphidamas).",
+      "citations": ["DL IX.13–14 (quotes the Darius correspondence)"],
+      "transmission": "Transmitted with the corpus of Cynic epistles; Diogenes Laertius already quotes the exchange with Darius as genuine.",
+      "authenticity": "Spurious, universally. Written centuries after Heraclitus' death, in a rhetorical school tradition that produced fictional letters for many famous figures. Diogenes' credulity here is a useful measure of his reliability elsewhere.",
+      "summary": "Heraclitus haughtily declines Darius' invitation to the Persian court, preferring obscurity and a modest life; other letters develop a Cynic-flavoured moralising persona.",
+      "editions": ["Attridge, First-Century Cynicism in the Epistles of Heraclitus (1976)"],
+      "translations": ["Attridge (1976), with Greek text"],
+      "publicDomain": false,
+      "notes": "Include in the atlas precisely because it is fake: it shows students how a philosophical persona gets manufactured after the fact."
+    },
+    {
+      "id": "heraclitus-testimonia",
+      "title": "Testimonia (DK 22 A)",
+      "status": "non-authorial",
+      "genre": "testimonia collection",
+      "language": "Ancient Greek",
+      "date": { "start": -380, "end": 600, "approximate": true },
+      "extent": "23 testimonia in DK 22 A.",
+      "citations": ["DK 22 A", "Plato, Cratylus 402a, Theaetetus 152d–e, 179d–180b", "Aristotle, Metaphysics 1005b23–25, 1010a10–15", "DL IX.1–17"],
+      "transmission": "Plato is the earliest substantial witness and the origin of the 'everything flows' (panta rhei) formula — a phrase that appears nowhere in the fragments themselves. Aristotle transmits the charge that Heraclitus denied the principle of non-contradiction.",
+      "authenticity": "Not by Heraclitus. Critically important to separate from the fragments, because the two most famous 'Heraclitean' doctrines — universal flux and the denial of non-contradiction — are Platonic and Aristotelian framings, and both have been contested by modern scholars (notably Kirk and Kahn) as distortions of what the fragments actually say.",
+      "summary": "The reception that made Heraclitus 'the flux philosopher': Plato's Cratylus and Theaetetus, Aristotle's polemic, the Stoic appropriation of the logos and the ekpyrōsis, and the biographical tradition (misanthropy, the dropsy, the dung cure, the weeping philosopher).",
+      "editions": ["Diels–Kranz, ch. 22 A", "Laks & Most, Loeb (2016), vol. III"],
+      "translations": ["Kirk, Raven & Schofield, ch. 6", "Laks & Most, Loeb (2016)"],
+      "publicDomain": true,
+      "notes": "'Panta rhei' is listed in this atlas among Heraclitus' key doctrines. It should carry a flag: the phrase is Plato's summary, not a fragment. The nearest genuine text is B12 on the river."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Allegories of Homer (Homeric Problems)",
+      "reason": "By Heraclitus the Grammarian / 'Heraclitus the Allegorist', a 1st-century CE author who shares only the name. Frequently miscatalogued under the Ephesian in library records and online collections.",
+      "actualAuthor": "Heraclitus the Grammarian (1st c. CE)"
+    },
+    {
+      "title": "On Incredible Things (De Incredibilibus)",
+      "reason": "A paradoxographical work by yet another Heraclitus, of uncertain date.",
+      "actualAuthor": "Heraclitus Paradoxographus"
+    }
+  ],
+  "sources": [
+    "Diogenes Laertius, Lives IX.1–17 (three-logoi division and Artemisium deposit verified)",
+    "Diels–Kranz, Die Fragmente der Vorsokratiker, ch. 22",
+    "Marcovich, Heraclitus (1967)",
+    "Kahn, The Art and Thought of Heraclitus (1979)",
+    "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed."
+  ],
+  "compiled": "2026-07-23",
+  "confidence": "high"
+}

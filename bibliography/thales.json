@@ -1,0 +1,144 @@
+{
+  "authorId": "thales",
+  "authorName": "Thales of Miletus",
+  "corpusNote": "Nothing written by Thales survives, and antiquity was already divided over whether he wrote at all. Diogenes Laertius reports both positions side by side (I.23): 'according to some he left nothing in writing', while others credited him with two short astronomical treatises. Everything we know of his thought reaches us through report — above all Aristotle, who himself signals distance ('what is recorded about him'). The corpus below is therefore a corpus of titles and testimonia, not of texts.",
+  "referenceSystems": [
+    {
+      "name": "Diels–Kranz",
+      "abbrev": "DK",
+      "note": "Thales = DK 11. Section A = testimonia (reports about him); section B = verbatim quotation. For Thales the A-section carries essentially the whole corpus; no B-material is securely authentic."
+    },
+    {
+      "name": "Diogenes Laertius",
+      "abbrev": "DL",
+      "note": "Lives of the Eminent Philosophers I.22–44 = the ancient life of Thales, and the source for most attributed titles."
+    }
+  ],
+  "works": [
+    {
+      "id": "thales-on-the-solstice",
+      "title": "On the Solstice",
+      "originalTitle": "Περὶ τροπῆς",
+      "transliteration": "Peri tropēs",
+      "status": "lost",
+      "genre": "astronomical treatise",
+      "language": "Ancient Greek",
+      "date": { "start": -590, "end": -550, "approximate": true, "note": "Undatable; placed within Thales' floruit, conventionally fixed by the solar eclipse of 28 May 585 BCE he is said to have predicted." },
+      "extent": "Lost. Title only, with no quoted line surviving.",
+      "citations": ["DL I.23"],
+      "transmission": "Known solely from Diogenes Laertius, who reports it as the view of one faction: 'according to others he wrote nothing but two treatises, one On the Solstice and one On the Equinox.'",
+      "authenticity": "Attributed. The attribution is ancient but reported by Diogenes as one opinion among competing ones, in the same breath as the claim that Thales wrote nothing at all. Nothing corroborates it.",
+      "summary": "Presumed to have treated the solstitial points — the turning of the sun at the extremes of its annual path. Thales is credited in the testimonia with determining the intervals between solstices and equinoxes, which would be the natural subject matter.",
+      "editions": ["Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 11"],
+      "translations": ["No text to translate; the testimonium is in R.D. Hicks, Diogenes Laertius, Loeb Classical Library (1925)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D1%3Achapter%3D1",
+      "notes": "Paired with On the Equinox in the single sentence that attests both; the two should be treated as one attribution, not two independent ones."
+    },
+    {
+      "id": "thales-on-the-equinox",
+      "title": "On the Equinox",
+      "originalTitle": "Περὶ ἰσημερίας",
+      "transliteration": "Peri isēmerias",
+      "status": "lost",
+      "genre": "astronomical treatise",
+      "language": "Ancient Greek",
+      "date": { "start": -590, "end": -550, "approximate": true },
+      "extent": "Lost. Title only.",
+      "citations": ["DL I.23", "Hesychius / Suda, s.v. Θαλῆς"],
+      "transmission": "Diogenes Laertius I.23, as above. Independently supported by Hesychius (transmitted through the Suda), who records that Thales 'wrote on celestial matters in epic verse, on the equinox, and much else.'",
+      "authenticity": "Attributed, and marginally better attested than the companion title: the Hesychius/Suda notice mentions the equinox work separately from Diogenes' report. Still no fragment.",
+      "summary": "Presumed to have treated the equinoctial points and the division of the solar year. The Suda notice's phrase 'in epic verse' — if it extends to this work — would make it hexameter didactic poetry rather than prose, which is the earlier and more plausible medium for the 6th century.",
+      "editions": ["Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 11"],
+      "translations": ["Testimonium in Hicks, Loeb Classical Library (1925)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D1%3Achapter%3D1",
+      "notes": "The 'in epic verse' notice matters: it bears on whether Milesian prose begins with Thales or with Anaximander. Most scholars give the first philosophical prose to Anaximander."
+    },
+    {
+      "id": "thales-nautical-star-guide",
+      "title": "Nautical Star-Guide (Nautical Astronomy)",
+      "originalTitle": "Ναυτικὴ ἀστρολογία",
+      "transliteration": "Nautikē astrologia",
+      "status": "spurious",
+      "genre": "didactic poem / navigational handbook",
+      "language": "Ancient Greek",
+      "date": { "start": -600, "end": -300, "approximate": true, "note": "If by Phokos, 6th century; the ascription to Thales may be Hellenistic." },
+      "extent": "Lost. Title, plus the claim that it ran to some 200 lines.",
+      "citations": ["DL I.23", "DL I.34 (Lobon of Argos on the extent)", "Simplicius"],
+      "transmission": "Diogenes Laertius I.23 names it as the work 'attributed to him' but adds that it 'is said to be by Phokos of Samos.' Simplicius nonetheless cites it under Thales' name. Lobon of Argos (in DL I.34) put Thales' total written output at about 200 lines — a figure usually taken to refer to this poem.",
+      "authenticity": "Spurious, and recognised as such already in antiquity. Diogenes' own source reassigns it to Phokos of Samos. Lobon of Argos, the authority for the 200-line figure, is a notoriously unreliable Hellenistic compiler with a habit of inventing verse totals for the Sages.",
+      "summary": "A guide to navigating by the stars. The associated tradition credits Thales with telling sailors to steer by Ursa Minor rather than Ursa Major — the smaller constellation sits closer to the celestial pole and so gives a truer north. Callimachus alludes to this advice.",
+      "editions": ["Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 11"],
+      "translations": ["Testimonia in Hicks, Loeb Classical Library (1925)"],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D1%3Achapter%3D1",
+      "notes": "The single most useful teaching case in the whole Presocratic corpus for how ancient attribution works: a named work, a named alternative author, a suspiciously precise line-count, and no text."
+    },
+    {
+      "id": "thales-on-celestial-matters",
+      "title": "On Celestial Matters (in epic verse)",
+      "originalTitle": "Περὶ μετεώρων",
+      "transliteration": "Peri meteōrōn",
+      "status": "lost",
+      "genre": "didactic poem",
+      "language": "Ancient Greek",
+      "date": { "start": -590, "end": -550, "approximate": true },
+      "extent": "Lost. Known only from a summary notice.",
+      "citations": ["Hesychius, preserved in the Suda, s.v. Θαλῆς"],
+      "transmission": "Hesychius of Miletus, via the Suda: Thales 'wrote on celestial matters in epic verse, on the equinox, and much else.' Plutarch likewise associates Thales with views 'expressed in verse.'",
+      "authenticity": "Attributed, weakly. The notice is late (Hesychius, 6th c. CE, reaching us only through the 10th-century Suda) and vague — 'and much else' is a compiler's shrug rather than a catalogue.",
+      "summary": "Astronomical and meteorological doctrine in hexameters. Would be the natural home of the doctrines the testimonia credit to Thales: the earth floating on water, the cause of earthquakes, the Nile flood, the estimation of the sun's and moon's apparent size.",
+      "editions": ["Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 11"],
+      "translations": [],
+      "publicDomain": true,
+      "notes": "Possibly not a distinct work but the Suda's loose way of describing the same material as On the Solstice / On the Equinox. Counted separately here because the title is separately transmitted."
+    },
+    {
+      "id": "thales-testimonia",
+      "title": "Testimonia (DK 11 A)",
+      "status": "non-authorial",
+      "genre": "testimonia collection",
+      "language": "Ancient Greek, some Latin",
+      "date": { "start": -350, "end": 1000, "approximate": true, "note": "Date of the reporting sources, not of Thales." },
+      "extent": "The standard modern collection is DK 11 A (Diels–Kranz ch. 11, section A). This, not any work of Thales, is what a student actually reads.",
+      "citations": ["DK 11 A", "Aristotle, Metaphysics A.3, 983b6–27", "Aristotle, De Anima 411a7–8, 405a19–21", "DL I.22–44", "Herodotus I.74–75, I.170"],
+      "transmission": "Aristotle is the crucial witness and the earliest substantial one — some two and a half centuries after Thales. He reports the water thesis in Metaphysics A.3 with an explicit hedge, and the doctrines about soul and magnets in De Anima with 'they say' and 'from what is recorded'. Everything later (Theophrastus, then the doxographic tradition through Aëtius, Simplicius, Diogenes Laertius, Hippolytus) descends largely from Aristotle and his pupil Theophrastus, and so is not independent confirmation.",
+      "authenticity": "Not by Thales. This entry exists because for Thales the testimonia constitute the corpus; treating them as the text is the standard scholarly practice and the honest one to teach.",
+      "summary": "The doctrines attributed: water is the archē, the principle and origin of all things; the earth rests on water like a floating log; all things are full of gods; the magnet has soul, because it moves iron. Plus the biographical tradition — the eclipse prediction of 585 BCE, the olive-press monopoly, the diversion of the Halys, falling into the well.",
+      "editions": [
+        "Diels–Kranz, Die Fragmente der Vorsokratiker, 6th ed. (1951), vol. I, ch. 11",
+        "Laks & Most, Early Greek Philosophy, Loeb Classical Library (2016), vol. II — the current standard, with a renumbering that supersedes DK for new work"
+      ],
+      "translations": [
+        "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed. (1983), ch. 2",
+        "Laks & Most, Early Greek Philosophy, Loeb (2016), vol. II — Greek and English facing",
+        "Hicks, Diogenes Laertius, Loeb (1925) — public domain"
+      ],
+      "publicDomain": true,
+      "onlineText": "https://www.perseus.tufts.edu/hopper/text?doc=Perseus%3Atext%3A1999.01.0258%3Abook%3D1%3Achapter%3D1",
+      "notes": "Teaching point: the gap between Thales (fl. c. 585 BCE) and Aristotle (writing c. 350 BCE) is longer than the gap between us and Shakespeare. Students should meet the water thesis as Aristotle's reconstruction, not as Thales' sentence."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Nautical Star-Guide",
+      "reason": "Retained above as a spurious work rather than excluded outright, because Simplicius still cites it under Thales' name and students will meet it.",
+      "actualAuthor": "Phokos of Samos (per Diogenes Laertius I.23)"
+    },
+    {
+      "title": "On First Principles (Περὶ ἀρχῶν)",
+      "reason": "No ancient source attributes a work of this title to Thales. It circulates in modern popular accounts by back-formation from Aristotle's report that Thales made water the archē. Do not list it as a work.",
+      "actualAuthor": "None — modern phantom title"
+    }
+  ],
+  "sources": [
+    "Diogenes Laertius, Lives I.22–44 (verified against Perseus, Hicks Loeb text)",
+    "Internet Encyclopedia of Philosophy, 'Thales of Miletus' (verified for the Simplicius and Hesychius attributions)",
+    "Diels–Kranz, Die Fragmente der Vorsokratiker, ch. 11",
+    "Kirk, Raven & Schofield, The Presocratic Philosophers, 2nd ed.",
+    "Laks & Most, Early Greek Philosophy, Loeb (2016)"
+  ],
+  "compiled": "2026-07-23",
+  "confidence": "high"
+}

@@ -1,0 +1,15 @@
+{
+  "id": "katha-upanishad",
+  "title": "Katha Upanishad",
+  "author": "badarayana",
+  "authorName": "Various",
+  "sourceLanguage": "Sanskrit",
+  "translator": "F. Max Müller",
+  "translationYear": "1884",
+  "source": "https://en.wikisource.org/wiki/Sacred_Books_of_the_East/Volume_15/Katha-upanishad",
+  "license": "Public Domain (translator F. Max Müller d. 1900)",
+  "work": "Katha-Upanishad",
+  "attribAuthor": "Anonymous (Vedic sages)",
+  "attribTrans": "F. Max M\\\"uller (public domain)",
+  "outfile": "katha-upanishad.tex"
+}

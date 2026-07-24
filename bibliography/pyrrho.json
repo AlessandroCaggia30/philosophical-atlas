@@ -1,0 +1,81 @@
+{
+  "authorId": "pyrrho",
+  "authorName": "Pyrrho of Elis",
+  "corpusNote": "Like Socrates, Pyrrho wrote nothing — a silence consistent with a philosophy of suspended judgement. His thought reaches us at two removes: through his devoted pupil Timon of Phlius, whose satirical poems (especially the Silloi) preserved and propagated it, and then through the much later systematisers Aenesidemus and Sextus Empiricus, who built 'Pyrrhonism' into a full sceptical method centuries after Pyrrho's death. The single most important source-fragment is Aristocles' quotation of Timon quoting Pyrrho (the 'Aristocles passage'), the nearest thing we have to Pyrrho's own words. This file catalogues the transmission, not works of Pyrrho.",
+  "referenceSystems": [
+    { "name": "Decleva Caizzi", "abbrev": "DC", "note": "Fernanda Decleva Caizzi, Pirrone: Testimonianze (1981) — the standard collection of testimonia on Pyrrho." },
+    { "name": "Diels (Timon)", "abbrev": "Diels PPF", "note": "Timon's fragments in Diels, Poetarum Philosophorum Fragmenta (1901); also di Marco, Timone di Fliunte: Silli (1989)." }
+  ],
+  "works": [
+    {
+      "id": "pyrrho-elegy-alexander",
+      "title": "Poem to Alexander (attributed)",
+      "originalTitle": "—",
+      "status": "lost",
+      "genre": "encomiastic poem",
+      "language": "Ancient Greek",
+      "date": { "start": -330, "end": -323, "approximate": true },
+      "extent": "Lost; possibly the sole thing Pyrrho ever wrote, if he wrote it. Title/notice only.",
+      "citations": ["DL IX.61"],
+      "transmission": "Diogenes Laertius IX.61 reports that Pyrrho wrote a poem to Alexander the Great and was rewarded for it — the only claim that he composed anything.",
+      "authenticity": "Doubtful and, even if true, non-philosophical. It would date from Pyrrho's participation in Alexander's Indian campaign (where, tradition says, he encountered the 'gymnosophists' / naked sages who influenced his ataraxia).",
+      "summary": "An occasional court poem, not a statement of doctrine. Its interest is biographical — evidence for Pyrrho's presence on the eastern expedition.",
+      "editions": ["Decleva Caizzi, Pirrone: Testimonianze (1981)"],
+      "translations": ["Notice in Hicks, Diogenes Laertius, Loeb (1925)"],
+      "publicDomain": true
+    },
+    {
+      "id": "pyrrho-timon-transmission",
+      "title": "Source: the poems of Timon of Phlius (Silloi, Indalmoi, Pytho)",
+      "originalTitle": "Σίλλοι",
+      "transliteration": "Silloi",
+      "status": "non-authorial",
+      "genre": "satirical and philosophical verse (source)",
+      "language": "Ancient Greek",
+      "date": { "start": -300, "end": -230, "approximate": true },
+      "extent": "Timon's works are themselves lost but survive in ~140 fragments; through them, and them alone, we have near-contemporary access to Pyrrho.",
+      "citations": ["Aristocles of Messene, ap. Eusebius, Praeparatio Evangelica XIV.18.1–5 (the 'Aristocles passage')", "Diels, PPF", "DL IX.65"],
+      "transmission": "Timon (c. 320–230 BCE), Pyrrho's pupil, propagated the master's outlook in verse: the Silloi ('Lampoons'), a hexameter parody skewering all dogmatic philosophers while exempting Pyrrho; the Indalmoi ('Images/Appearances'); and Pytho. Aristocles (1st–2nd c. CE) quotes Timon reporting Pyrrho's central teaching — the Aristocles passage — preserved in turn by Eusebius. This chain (Pyrrho → Timon → Aristocles → Eusebius) is the backbone of Pyrrho scholarship.",
+      "authenticity": "Not by Pyrrho; the primary evidence for him. The Aristocles passage is intensely debated — especially whether Pyrrho's claim that things are 'undifferentiated, unstable, and unjudged' is a metaphysical thesis about reality (the 'metaphysical' reading, Bett) or an epistemic one about our access to it (the 'epistemological' reading).",
+      "summary": "The Aristocles passage: whoever would be happy must consider three things — how things are by nature (answer: undifferentiated, unmeasurable, undecidable); what our attitude toward them should be (answer: without opinion, without inclination, unwavering, saying of each that it no more is than is not); and what results for those so disposed (answer: first speechlessness / aphasia, then freedom from disturbance / ataraxia). The seed of the entire sceptical tradition.",
+      "editions": ["Decleva Caizzi (1981); di Marco, Timone di Fliunte: Silli (1989); Diels PPF"],
+      "translations": ["Long & Sedley, The Hellenistic Philosophers (1987), §1–3, 71; Bett, Pyrrho, His Antecedents and His Legacy (2000)"],
+      "publicDomain": true,
+      "notes": "The Aristocles passage is the single text to teach for Pyrrho — quote it and lay out the metaphysical-vs-epistemic interpretive fork."
+    },
+    {
+      "id": "pyrrho-later-pyrrhonism",
+      "title": "Source: later Pyrrhonism (Aenesidemus, Sextus Empiricus)",
+      "originalTitle": "—",
+      "status": "non-authorial",
+      "genre": "systematic sceptical philosophy (later source)",
+      "language": "Ancient Greek",
+      "date": { "start": -80, "end": 210, "approximate": true },
+      "extent": "The developed sceptical system attached to Pyrrho's name, composed 200–500 years after him.",
+      "citations": ["Sextus Empiricus, Outlines of Pyrrhonism; Against the Mathematicians", "Aenesidemus, Pyrrhonian Discourses (lost; summarised by Photius, Bibliotheca cod. 212)", "DL IX.78–108 (the modes)"],
+      "transmission": "Aenesidemus (1st c. BCE) revived and codified Pyrrhonism, formulating the Ten Modes of suspension; his work survives only in Photius' summary and in Sextus. Sextus Empiricus (see his own file) is the full surviving system. The historical distance means 'Pyrrhonism' is largely a construction around Pyrrho rather than his own doctrine.",
+      "authenticity": "Not Pyrrho's own — a crucial caution. The relationship between Pyrrho's ethical, quietist outlook and the later dialectical machinery of the Modes and the sceptical 'formulae' (epochē, ou mallon, ataraxia) is a central scholarly problem.",
+      "summary": "The systematised method: the Ten Modes of Aenesidemus and Five Modes of Agrippa producing suspension of judgement (epochē) by opposing appearances and arguments of equal weight (isostheneia), yielding tranquillity (ataraxia). Whether this apparatus continues Pyrrho or transforms him is the question.",
+      "editions": ["Mutschmann–Mau, Sexti Empirici Opera (Teubner); Decleva Caizzi for the Pyrrho testimonia"],
+      "translations": ["Annas & Barnes, Sextus Empiricus: Outlines of Scepticism (2000); Long & Sedley (1987)"],
+      "publicDomain": true,
+      "notes": "Cross-link to sextus-empiricus. Teach the gap: Pyrrho the quietist sage vs Pyrrhonism the argumentative system."
+    }
+  ],
+  "excluded": [
+    {
+      "title": "Any sceptical treatise",
+      "reason": "Pyrrho composed no philosophical writing; the Outlines of Pyrrhonism and all systematic Pyrrhonist works are by Sextus Empiricus and the later school, not by Pyrrho.",
+      "actualAuthor": "Sextus Empiricus; Aenesidemus"
+    }
+  ],
+  "sources": [
+    "Diogenes Laertius, Lives IX.61–108",
+    "Aristocles ap. Eusebius, Praeparatio Evangelica XIV.18 (the Aristocles passage)",
+    "Decleva Caizzi, Pirrone: Testimonianze (1981)",
+    "Bett, Pyrrho, His Antecedents and His Legacy (2000)",
+    "Long & Sedley, The Hellenistic Philosophers (1987)"
+  ],
+  "compiled": "2026-07-24",
+  "confidence": "high"
+}

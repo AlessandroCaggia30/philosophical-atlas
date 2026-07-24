@@ -1,0 +1,16 @@
+{
+  "id": "isha-upanishad",
+  "title": "Isha Upanishad",
+  "author": "badarayana",
+  "authorName": "Various",
+  "sourceLanguage": "Sanskrit",
+  "translator": "F. Max Müller",
+  "translationYear": "1879",
+  "source": "https://en.wikisource.org/wiki/Sacred_Books_of_the_East/Volume_1/V%C3%A2gasaneyi-samhit%C3%A2-upanishad",
+  "license": "Public Domain (translator F. Max Müller d. 1900)",
+  "work": "Isha-Upanishad (V\\^agasaneyi-Samhit\\^a-Upanishad)",
+  "attribAuthor": "Anonymous (Vedic sages)",
+  "attribTrans": "F. Max M\\\"uller (public domain)",
+  "cutHtmlAt": "<hr class=\"wst-rule wst-rule-center\" style=\"color:inherit;width:5em;\" />\n<style",
+  "outfile": "isha-upanishad.tex"
+}

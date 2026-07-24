@@ -3,6 +3,7 @@
 
 import Link from 'next/link';
 import { texts } from '@/data/texts';
+import { fullTexts } from '@/data/fulltexts';
 import { authors } from '@/data/authors';
 import { concepts } from '@/data/concepts';
 import { edges } from '@/data/edges';
@@ -190,7 +191,7 @@ export default async function TextPage({ params }: { params: Promise<{ id: strin
 
       {/* Read button for public domain texts with content */}
       <div style={{ display: 'flex', gap: 12 }}>
-        {text.publicDomain && text.latexContent && (
+        {(fullTexts[text.id] || (text.publicDomain && text.latexContent)) && (
           <Link href={`/text/${text.id}/read`} style={{
             padding: '10px 20px',
             background: 'var(--color-gold)',
@@ -200,7 +201,7 @@ export default async function TextPage({ params }: { params: Promise<{ id: strin
             fontSize: 14,
             fontWeight: 500,
           }}>
-            Read scholarly edition →
+            {fullTexts[text.id] ? `Read full text (${fullTexts[text.id].paragraphs} paras) →` : 'Read scholarly edition →'}
           </Link>
         )}
         <Link href={`/network?highlight=${text.id}`} style={{
